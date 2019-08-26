@@ -179,3 +179,10 @@ add_action('after_setup_theme', 'theme_features');
 // }
 // add_filter('the_excerpt', 'wps_highlight_results');
 // add_filter('the_title', 'wps_highlight_results');
+
+
+// function is_user_logged_in() {
+//     $user = wp_get_current_user();
+ 
+//     return $user->exists();
+// }

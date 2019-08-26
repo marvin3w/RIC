@@ -9,7 +9,6 @@
     $this_term = get_queried_object();
 
     $url = site_url();
-
 	
 ?>
        
@@ -47,7 +46,7 @@
                         <?php 
                             $args = array( 
                                 'post_type' => 'representante',
-                                'posts_per_page' => -1 ,
+                                'posts_per_page' => 10 ,
                                 'tax_query' => array(
                                     array(
                                         'taxonomy' => 'representantes',
@@ -65,10 +64,15 @@
                                 
                                 ?>
                                 
-                                <div class="result">
+                                <div class="result" data-email="<?php echo get_field( 'email', $post->ID ); ?>" data-name="<?php the_title(); ?>">
                                     <h3><?php the_title(); ?></h3>
                                     <a href="<?php echo get_field( 'email', $post->ID ); ?>" class="mail"><?php echo get_field( 'email', $post->ID ); ?></a>
                                     <a href="tel:<?php echo preg_replace("/[^0-9]/", "", get_field( 'telefone', $post->ID )) ;?>"><?php echo get_field( 'telefone', $post->ID ); ?></a>
+                                    <?php 
+                                        $phone2 = get_field( 'telefone_2', $post->ID );
+                                        if ( $phone2 ) { ?>
+                                        <a href="tel:<?php echo preg_replace("/[^0-9]/", "", $phone2) ;?>"><?php echo $phone2; ?></a>
+                                    <?php } ?>
                                     <address>
                                         <? 
                                             $endereco = get_field( 'endereco', $post->ID );
@@ -98,8 +102,8 @@
                      </div> <!-- End result -->
 
                     <div class="contact">
-                        <h4>ENTRE EM CONTATO COM ESTE REPRESTANTE:</h4>
-                        <?php echo do_shortcode( '[contact-form-7 id="50" title="Representante"]' ); ?>
+                        <h4>ENTRE EM CONTATO:</h4>
+                        <?php echo do_shortcode( '[contact-form-7 id="87" title="Representante"]' ); ?>
                     </div>
                 </div>
 
@@ -109,7 +113,7 @@
                         <style type="text/css">
                             .st0{fill:#CCCCCC;}
                             .st1{fill:#2F363F;}
-                            .st{fill:#d73035;}
+                            .st{fill:#ed8b00;}
                         </style>
 
                         <a xlink:href="<?php echo $url.'/representantes/ma/';?>" aria-label="Maranhão" data-uf="ma">
@@ -978,7 +982,13 @@
 
                 </div>
 			</div>
-		</section>
+        </section>
+        <section class="form-representative">
+            <div class="wrap">
+                <h2>Seja um representante RIC</h2>
+                <?php echo do_shortcode( '[contact-form-7 id="86" title="Seja um representante"]' ); ?>
+            </div>
+        </section>
 	</main>
 
 <?php 

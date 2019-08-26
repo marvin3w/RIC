@@ -1,225 +1,189 @@
-<?php get_header(); ?>
+<?php
+    /*Template name: Página Inicial */
+	get_header(); 
+	// $fields = get_fields();
+?>
 
-
-
-<section class="banner" role="banner">
-
-    <div class="carousel">
-
-        <?php if(have_rows('slides', 15)) : ?>
-
-            <?php while(have_rows('slides', 15)) : the_row()?>
-
-                <div>
-
-                    <div class="carousel__item flex" style="background-image: url(<?php the_sub_field('slide_imagem'); ?>)">
-
-                        <div class="row">
-
-                            <div class="small-12 medium-6 large-5 columns">
-
-                                <h2><?php the_sub_field('slide_titulo');?></h2>
-
-                                <?php the_sub_field('slide_texto');?>
-
-                                <a href="<?php the_sub_field('slide_link');?>" class="btn__default btn__default--primary">Veja nossos produtos</a>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            <?php endwhile; ?>
-
-        <?php endif; ?>
-
-    </div>
-
-</section>
-
-
-
-<div class="home-bg">
-
-    <section class="container container--primary container-why">
-
-        <div class="row expanded">
-
-            <div class="small-12 medium-5 medium-offset-3 columns">
-
-                <h3 class="title">Porque escolher um<br /><span>Coworking?</span></h3>
-
-                <?php the_field('porque_coworking_texto'); ?>
-
-
-
-                <a href="<?php echo get_bloginfo('url') ?>/produtos" class="btn__default btn__default--primary mobile__buttonspace">Veja nossos produtos</a>
-
+<main class="main-home">
+    <section class="header-title painel-home">
+        <div class="item" style="background-image:url(<?php echo get_template_directory_uri(); ?>/assets/images/bg-slider.jpg);">
+            <div class="wrap">
+            <div class="title-section">
+                <h2>Paineis Solares</h2>
+                <h3>
+                    Reduza em até 95%<br>
+                    sua conta de energia<br>
+                    pelos próximos<br>
+                    25 anos
+                </h3>
+                <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Quero Economizar</a>
             </div>
-
-
-
-            <div class="small-12 medium-4 columns">
-
-                <!-- <div class="card-form">
-
-                    <div class="card-form__header">
-
-                        <h4>Faça aqui uma <span>cotação</span><br />com a Intermetro</h4>
-
-                    </div>
-
-                    <?php echo do_shortcode('[contact-form-7 id="40" title="Cotação"]'); ?>
-
-                </div> -->
-
-                <a href="<?php echo esc_url( get_page_link( 107 ) ); ?>" class="btn__default btn__default--primary btn_plan" target="_blank">Planos e Preços</a>
-
-                <a href="https://wa.me/5551997502659" class="btn__default btn__default--wp" target="_blank">Fale pelo WhatsApp</a>
-
-                <div class="card-form">
-
-                    <div class="card-form__header">
-
-                        <h4>Ligamos para você</h4>
-
-                    </div>
-
-                    <?php echo do_shortcode('[contact-form-7 id="41" title="Ligamos para você"]'); ?>
-
-                </div>
-
             </div>
-
         </div>
-
     </section>
 
-
-
-    <section class="container">
-
-        <div class="row">
-
-            <div class="small-12 medium-6 columns">
-
-                <h4 class="title">Porque escolher<br />a <span>Intermetro?</span></h4><br />
-
-
-
-                <div class="small-up-1 medium-up-2 row">
-
-                    <?php if(have_rows('porque_intermetro')) : ?>
-
-                        <?php while(have_rows('porque_intermetro')) : the_row()?>
-
-                            <div class="column column-block">
-
-                                <div class="card-reason flex">
-
-                                    <div class="card-reason__icon">
-
-                                        <img src="<?php the_sub_field('porque_intermetro_icone') ?>" alt="<?php the_sub_field('porque_intermetro_titulo') ?>">
-
-                                    </div>
-
-                                    <div class="card-reason__info">
-
-                                        <dl>
-
-                                            <dt><?php the_sub_field('porque_intermetro_titulo') ?></dt>
-
-                                            <dd><?php the_sub_field('porque_intermetro_texto') ?></dd>
-
-                                        </dl>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        <?php endwhile; ?>
-
-                    <?php endif; ?>
-
+    <section class="infograph colwidth">
+        <div class="col colleft">
+            <div class="content">
+                <div class="title-section">
+                    <h2>ENERGIA SOLAR</h2>
+                    <h3>Benefícios contínuos</h3>
+                    <p>Lorem ipsum dolor sit amet, conectetur adipiscing elit, sed eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim minim 
+                    veniam, quis nostrud exercitation ullamco laboris ut aliquip cosequat. 
+                    Duis aute irure dolor in reprehenderit in voluptate velit cillum dolore 
+                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident, 
+                    sunt in culpa qui officia deserunt mollit anim id est labo</p>
+                    <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Simule Aqui</a>
                 </div>
-
             </div>
-
-
-
-            <div class="small-12 medium-6 columns">
-
-                <img src="<?php echo get_bloginfo('template_url') ?>/assets/images/coworking.png" alt="">
-
-            </div>
-
         </div>
-
+        <div class="col colright">
+            <div class="content form-contact-home">
+                <div class="title-section">
+                    <h2>Fale Conosco</h2>
+                    <h3>Estou interessado</h3>
+                </div>
+                
+                <?php echo do_shortcode( '[contact-form-7 id="40" title="Contato"]' ); ?>  
+                
+                <div class="whats">
+                    <span class="text">ou pelo whats</span>
+                    <a href="#" class="btn btn-whats">
+                        <i><img src="<?php echo get_template_directory_uri(); ?>/assets/images/whats-ico.png" alt=""></i>
+                        <span>Atendimento por Whatsapp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
-
-
-    <section class="container container--end">
-
-        <div class="row">
-
-            <div class="small-12 columns">
-
-                <div class="masonry-layout">
-
-                    <div class="ml__item show-for-large">
-
-                        <?php get_template_part('template-parts/video'); ?>
-
-                    </div>
-
-                    <?php $count = 0; ?>
-
-                    <?php if(have_rows('foto', 148)) : ?>
-
-                        <?php while(have_rows('foto', 148)) : the_row()?>
-
-                            <?php 
-
-                                $count++;
-
-                                if($count > 8) { break; }
-
-                            ?>
-
-                            <a data-fancybox="gallery" href="<?php the_sub_field('foto_imagem'); ?>" class="ml__item">
-
-                                <img src="<?php the_sub_field('foto_imagem'); ?>" alt="<?php the_sub_field('foto_texto'); ?>">
-
-                            </a>
-
-                        <?php endwhile; ?>
-
-                    <?php endif; ?>
-
-                </div>
-
-
-
-                <div class="text-center">
-
-                    <a href="https://www.google.com/maps/place/Rua+18+de+Novembro,+273+-+Navegantes,+Porto+Alegre+-+RS/@-29.9987297,-51.1959444,17z/data=!3m1!4b1!4m5!3m4!1s0x951979f1c26d2511:0x25d2316ca596171a!8m2!3d-29.9987344!4d-51.1937557" class="btn__default btn__default--primary" target="_blank">Ver como chegar</a>
-
-                </div>
-
+    <section class="infos-icons icons-benefits">
+        <div class="wrap">
+            <div class="title-section">
+                <h2>Energia Solar</h2>
+                <h3>Vantagens</h3>
             </div>
-
+            <div class="itens-infos">
+                <div class="info">
+                    <figure>
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-1.png">
+                    </figure>
+                    <h3>Sustentável e Ambiental</h3>
+                </div>
+                <div class="info">
+                    <figure>
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-2.png">
+                    </figure>
+                    <h3>Tecnologia de ponta</h3>
+                </div>
+                <div class="info">
+                    <figure>
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-4.png">
+                    </figure>
+                    <h3>Economia mensal garantida</h3>
+                </div>
+                <div class="info">
+                    <figure>
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-5.png">
+                    </figure>
+                    <h3>Fácil de implementar</h3>
+                </div>
+                <div class="info">
+                    <figure>
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-3.png">
+                    </figure>
+                    <h3>Controle da Energia gerada</h3>
+                </div>
+                <div class="info">
+                    <figure>
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-3.png">
+                    </figure>
+                    <h3>Energia em dias nublados</h3>
+                </div>
+                <div class="info">
+                    <figure>
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-1.png">
+                    </figure>
+                    <h3>Sustentável e Ambiental</h3>
+                </div>
+            </div>
         </div>
-
+        <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Quero Economizar</a>
     </section>
 
-</div>
+   
+    <section class="content-about">
+        <div class="wrap">
+            <div class="col">
+                <h2>
+                    HÁ X ANOS NO MERCADO LEVANDO
+                    ECONÔMIA PARA SEU BOLSO.
+                </h2>
+                <p>
+                    Lorem ipsum dolor sit amet, conectetur adipiscing elit, sed eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim minim 
+                    veniam, quis nostrud exercitation ullamco laboris ut aliquip cosequat. 
+                    Duis aute irure dolor in reprehenderit in voluptate velit cillum dolore 
+                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident, 
+                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, conectetur adipiscing elit, sed eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim minim 
+                    veniam, quis nostrud exercitation ullamco laboris ut aliquip cosequat. 
+                    Duis aute irure dolor in reprehenderit in voluptate velit cillum dolore 
+                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident, 
+                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            
+            <figure style="background-image:url(<?php echo get_template_directory_uri(); ?>/assets/images/bg-block-example.jpg);"></figure>
+        </div>
+    </section>
 
+    <section class="partners">
+        <div class="title-section">
+            <h2>Parceiros</h2>
+        </div>
+        <div class="partners-list">
+            <div class="wrap">
+                <figure class="item">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/partner.png" alt="Partner Name">
+                </figure>
+                <figure class="item">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/partner.png" alt="Partner Name">
+                </figure>
+                <figure class="item">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/partner.png" alt="Partner Name">
+                </figure>
+                <figure class="item">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/partner.png" alt="Partner Name">
+                </figure>
+                <figure class="item">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/partner.png" alt="Partner Name">
+                </figure>
+                <figure class="item">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/partner.png" alt="Partner Name">
+                </figure>
+            </div>
+        </div>
+    </section>
+    <section class="map">
+        <figure>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/map.png" alt="Mapa de localização">
+        </figure>
+    </section>
+    <section class="news">
+        <div class="wrap">
+            <span class="blue">conteúdos exclusivos sobre energia sustentável?</span>
+            <span class="orange">Assine nossa news</span>
+            <div class="form">
+                <?php echo do_shortcode( '[contact-form-7 id="39" title="News"]' ); ?>
+            </div>
+        </div>
+    </section>
 
+</main>
 
 <?php get_footer(); ?>

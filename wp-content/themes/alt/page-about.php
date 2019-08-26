@@ -8,7 +8,7 @@
     <section class="header-title">
         <h1>RIC - ENERGIA SUSTENTÁVEL</h1>
     </section>
-    <section class="content">
+    <section class="content-about">
         <div class="wrap">
             <div class="col">
                 <h2>

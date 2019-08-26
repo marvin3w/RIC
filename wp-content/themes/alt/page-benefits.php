@@ -9,7 +9,7 @@
         <h1>Vantagens</h1>
     </section>
 
-    <section class="infos-icons">
+    <section class="infos-icons icons-benefits">
         <div class="wrap">
             <p class="description">Lorem ipsum dolor sit amet, conectetur adipiscing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitation ullamco laboris ut aliquip cosequat duis aute irure dolor in reprehenderit in voluptate velit cillum dolore </p>
             <div class="itens-infos">
@@ -17,31 +17,43 @@
                     <figure>
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-1.png">
                     </figure>
-                    <h3>ENERGIA SOLAR SUSTENTÁVEL</h3>
+                    <h3>Sustentável e Ambiental</h3>
                 </div>
                 <div class="info">
                     <figure>
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-2.png">
                     </figure>
-                    <h3>Gere sua própria energia</h3>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-3.png">
-                    </figure>
-                    <h3>Energia solar renovável</h3>
+                    <h3>Tecnologia de ponta</h3>
                 </div>
                 <div class="info">
                     <figure>
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-4.png">
                     </figure>
-                    <h3>Vantagem<br>financeira</h3>
+                    <h3>Economia mensal garantida</h3>
                 </div>
                 <div class="info">
                     <figure>
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-5.png">
                     </figure>
-                    <h3>Valorisa seu imóvel<br>ou empresa</h3>
+                    <h3>Fácil de implementar</h3>
+                </div>
+                <div class="info">
+                    <figure>
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-3.png">
+                    </figure>
+                    <h3>Controle da Energia gerada</h3>
+                </div>
+                <div class="info">
+                    <figure>
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-3.png">
+                    </figure>
+                    <h3>Energia em dias nublados</h3>
+                </div>
+                <div class="info">
+                    <figure>
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-1.png">
+                    </figure>
+                    <h3>Sustentável e Ambiental</h3>
                 </div>
             </div>
         </div>

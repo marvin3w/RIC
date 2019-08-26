@@ -86,8 +86,25 @@
             ?>
         </nav>
 
-        <a href="" class="btn">Solicite um orçamento Gratis</a>
-        
+        <nav class="contacts-headers-mobile">
+            <div class="phones">
+                <a href="tel:+555133253001"><i></i> 51. 3325.3001</a>
+                <a href="tel:+555133253001"><i></i> 51. 3325.3001</a>
+                <?php
+                    if ( is_user_logged_in() ) { ?>
+                
+                    <a href="<?php echo get_home_url(); ?>/area-do-consultor/"><i></i> Área do Consultor</a>
+                
+                <?php    
+                    } else { ?>
+
+                        <a href="<?php echo get_home_url(); ?>/wp-login.php"><i></i> Área do Consultor</a>
+                <?php 
+                    }
+                ?>
+            </div>
+        </nav>
+
         <a class="close" onclick="togglemenu();">
             <svg height="32" id="close" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M4 8 L8 4 L16 12 L24 4 L28 8 L20 16 L28 24 L24 28 L16 20 L8 28 L4 24 L12 16 z"/></svg>
         </a>
