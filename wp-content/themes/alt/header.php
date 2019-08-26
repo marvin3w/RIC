@@ -14,12 +14,7 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
 
-    <meta name="google-site-verification" content="8ccT-7R3HmQU_6-4ZHfxDMg1ly3WzOduxlZ-3y0CwWk" />
-
     <?php wp_head(); ?>
-
-    
-
 
 </head>
 
@@ -64,7 +59,7 @@
                     <?php 
                         }
                     ?>
-                    <a href="" class="btn">Solicite um orçamento Gratis</a>
+                    <a href="" class="btn" data-modal="orcamento">Solicite um orçamento Gratis</a>
                 </div>
             </nav>
         

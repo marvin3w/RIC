@@ -51,18 +51,20 @@
 
     //Registro scripts e css
     function theme_scripts(){
+        // wp_enqueue_style('fancybox-css', get_template_directory_uri() . '/assets/css/jquery.fancybox.min.css', false, '1.1', 'all');
+        // wp_enqueue_style('app', get_template_directory_uri() . '/assets/css/landing.css', false, '1.1', 'all');
+
         // wp_enqueue_script('main-js', get_template_directory_uri() . '/dist/js/core.min.js', array(), '1.0.0', true );
         // wp_enqueue_script('main-js', get_template_directory_uri() . '/dist/js/script.js', array(), '1.0.0', true );
         // wp_enqueue_style( 'main-css', get_template_directory_uri() . '/dist/css/main.min.css', array(), time() );
-        // wp_enqueue_style('css-slider-theme', get_template_directory_uri() . '/assets/css/slick-theme.css', false, '1.1', 'all');
-
-        wp_enqueue_style('foundation', get_template_directory_uri() . '/assets/css/foundation.min.css', false, '1.1', 'all');
+        // wp_enqueue_style('foundation', get_template_directory_uri() . '/assets/css/foundation.min.css', false, '1.1', 'all');
+        // wp_enqueue_style('font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', true, '5.0', 'all');
+        
+        wp_enqueue_style('css-slider-theme', get_template_directory_uri() . '/assets/css/slick-theme.css', false, '1.1', 'all');
         wp_enqueue_style('fonts', get_template_directory_uri() . '/assets/fonts/fonts.css', false, '1.1', 'all');
         wp_enqueue_style('css-slider', get_template_directory_uri() . '/assets/css/slick.css', false, '1.1', 'all');
-        wp_enqueue_style('font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', true, '5.0', 'all');
-        wp_enqueue_style('fancybox-css', get_template_directory_uri() . '/assets/css/jquery.fancybox.min.css', false, '1.1', 'all');
         wp_enqueue_style('app', get_template_directory_uri() . '/assets/css/app.css', false, '1.1', 'all');
-        // wp_enqueue_style('app', get_template_directory_uri() . '/assets/css/landing.css', false, '1.1', 'all');
+
         wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), '2.2', true);
         wp_enqueue_script('slick', get_template_directory_uri() . '/assets/js/slick.min.js', array(), '1.8', true);
         wp_enqueue_script('fancybox', get_template_directory_uri() . '/assets/js/jquery.fancybox.min.js', array(), '3', true);

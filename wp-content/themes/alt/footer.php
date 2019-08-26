@@ -29,7 +29,7 @@
                 </ul>
             </div>
             <div class="col">
-                <a href="#" class="btn">Quero uma proposta</a>
+                <a href="#" class="btn" data-modal="orcamento">Quero uma proposta</a>
             </div>
             <div class="col">
                 <ul class="flex socials">
@@ -60,6 +60,24 @@
             </div>
         </div>
     </footer>
+
+    <div class="modal modal-orcamento">
+      <div class="overlay"></div>
+      <div class="content">
+        <i class="close">
+          <svg height="18" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M38 12.83l-2.83-2.83-11.17 11.17-11.17-11.17-2.83 2.83 11.17 11.17-11.17 11.17 2.83 2.83 11.17-11.17 11.17 11.17 2.83-2.83-11.17-11.17z"/><path d="M0 0h48v48h-48z" fill="none"/></svg>
+        </i>
+        <h3>
+          Orçamento
+        </h3>
+        <p class="description">
+          Deixe seu contato que entramos em contato para mais informações.
+        </p>
+        <div class="form-agenda form-fale">
+          <?php echo do_shortcode( '[contact-form-7 id="88" title="Orçamento"]' ); ?>
+        </div>
+      </div>
+    </div>
 
 
 <?php wp_footer(); ?>

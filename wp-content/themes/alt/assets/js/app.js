@@ -1,8 +1,8 @@
 // Trgger toggle menu
-var menu = document.querySelector('.menu-mobile');
+var menu = document.querySelector(".menu-mobile");
 
 function togglemenu() {
-    menu.classList.toggle('active');
+  menu.classList.toggle("active");
 }
 
 (function($) {
@@ -47,11 +47,14 @@ function togglemenu() {
       return false;
     });
 
-    $(".carousel").slick(carouselSettings);
+    $(".painel-home").slick({
+      dots: true,
+      arrows: false,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    });
 
-    $(".depoimentos").slick(carouselSettings);
-
-    $(".section-images .images").slick({
+    $(".projects .itens, .section-blog .slick").slick({
       arrows: false,
       responsive: [
         {
@@ -94,6 +97,20 @@ function togglemenu() {
         // settings: "unslick"
         // instead of a settings object
       ]
+    });
+
+    $(document).on("click", "[data-modal]", function(event) {
+      event.preventDefault();
+      var modal = ".modal-" + $(this).attr("data-modal");
+
+      $(modal).addClass("active");
+    });
+
+    $(document).on("click", ".modal .close", function() {
+      $(this)
+        .parent()
+        .parent()
+        .removeClass("active");
     });
 
     $(".to-top").on("click", function() {
