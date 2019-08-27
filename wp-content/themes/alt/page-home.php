@@ -1,54 +1,69 @@
 <?php
     /*Template name: Página Inicial */
 	get_header(); 
-	// $fields = get_fields();
+	$fields = get_fields();
 ?>
 
 <main class="main-home">
     <section class="header-title painel-home">
-        <div class="item" style="background-image:url(<?php echo get_template_directory_uri(); ?>/assets/images/bg-slider.jpg);">
-            <div class="wrap">
-                <div class="title-section">
-                    <h2>Paineis Solares</h2>
-                    <h3>
-                        Reduza em até 95%<br>
-                        sua conta de energia<br>
-                        pelos próximos<br>
-                        25 anos
-                    </h3>
-                    <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Quero Economizar</a>
+        <? 
+            $banner = $fields['banner'];
+            
+            if($banner)
+            {
+                foreach($banner as $value)
+                { 
+                ?>
+            
+                
+                <div class="item" style="background-image:url(<?php echo $value['imagem']['url']; ?>);">
+                    <div class="wrap">
+                        <div class="title-section">
+                            <h2><?php echo $value['titulo']; ?></h2>
+                            <h3>
+                                <?php echo $value['texto']; ?>
+                            </h3>
+                            
+                            <?php $posts = $value['link'];
+                            if( $posts ): ?>
+                                <?php foreach( $posts as $post): // variable must be called $post (IMPORTANT) ?>
+                                    <?php setup_postdata($post); ?>
+                                    
+                                    <a href="<?php the_permalink(); ?>" class="btn callaction"><?php echo $value['texto_do_botao']; ?></a>
+
+                                    <?php endforeach; ?>
+                                <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="item" style="background-image:url(<?php echo get_template_directory_uri(); ?>/assets/images/bg-slider.jpg);">
-            <div class="wrap">
-                <div class="title-section">
-                    <h2>Paineis Solares</h2>
-                    <h3>
-                        Reduza em até 95%<br>
-                        sua conta de energia<br>
-                        pelos próximos<br>
-                        25 anos
-                    </h3>
-                    <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Quero Economizar</a>
-                </div>
-            </div>
-        </div>
+        
+        
+                <?php }
+            }
+            //  var_dump($banner);
+        ?>
+        
     </section>
 
     <section class="infograph colwidth">
         <div class="col colleft">
             <div class="content">
                 <div class="title-section">
-                    <h2>ENERGIA SOLAR</h2>
-                    <h3>Benefícios contínuos</h3>
-                    <p>Lorem ipsum dolor sit amet, conectetur adipiscing elit, sed eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim minim 
-                    veniam, quis nostrud exercitation ullamco laboris ut aliquip cosequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit cillum dolore 
-                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est labo</p>
-                    <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Simule Aqui</a>
+                    <h2><?php echo $fields['chamada']['titulo_1']; ?></h2>
+                    <h3><?php echo $fields['chamada']['titulo_2']; ?></h3>
+                    <p><?php echo $fields['chamada']['texto']; ?></p>
+        
+                    <?php $posts = $value['link'];
+                    if( $posts ): ?>
+                        <?php foreach( $posts as $post): // variable must be called $post (IMPORTANT) ?>
+                            <?php setup_postdata($post); ?>
+                            
+                            <a href="<?php the_permalink(); ?>" class="btn callaction"><?php echo $value['texto_do_botao']; ?></a>
+
+                            <?php endforeach; ?>
+                        <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -71,7 +86,8 @@
             </div>
         </div>
     </section>
-
+    
+    <?php $fields_benefits = get_fields(16); ?>
     <section class="infos-icons icons-benefits">
         <div class="wrap">
             <div class="title-section">
@@ -79,110 +95,76 @@
                 <h3>Vantagens</h3>
             </div>
             <div class="itens-infos">
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-1.png">
-                    </figure>
-                    <h3>Sustentável e Ambiental</h3>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-2.png">
-                    </figure>
-                    <h3>Tecnologia de ponta</h3>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-4.png">
-                    </figure>
-                    <h3>Economia mensal garantida</h3>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-5.png">
-                    </figure>
-                    <h3>Fácil de implementar</h3>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-3.png">
-                    </figure>
-                    <h3>Controle da Energia gerada</h3>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-3.png">
-                    </figure>
-                    <h3>Energia em dias nublados</h3>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-1.png">
-                    </figure>
-                    <h3>Sustentável e Ambiental</h3>
-                </div>
+
+                <? 
+                    $vantagens = $fields_benefits['vantagens']['informacoes'];
+                    
+                    if($vantagens)
+                    {
+                        foreach($vantagens as $value)
+                        { 
+                        ?>
+                    
+                        <div class="info">
+                            <figure>
+                                <img src="<?php echo $value['icone']['url']; ?>">
+                            </figure>
+                            <h3><?php echo $value['titulo']; ?></h3>
+                        </div>
+                
+                        <?php }
+                    }
+                    //  var_dump($vantagens);
+                ?>
+                
             </div>
         </div>
-        <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Quero Economizar</a>
+        <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Simule Aqui</a>
     </section>
 
     <section class="content-steps">
         <div class="wrap">
             <h2>
-                Como adquirir<br>
-                O sistema de energia<br>
-                Solar fotovoltaica?
+                <?php echo $fields['como_adquirir']['titulo']; ?>
             </h2>
 
             <div class="steps">
-                <div class="step">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/passo1-ico.png" alt="Ícone" />
-                    </figure>
-                    <div class="content">
-                        <h3>Passo 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        incididunt ut labore et dolore magna aliqua. Ut enim melh 
-                        nostrud exercitation ullamco laboris.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/passo1-ico.png" alt="Ícone" />
-                    </figure>
-                    <div class="content">
-                        <h3>Passo 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        incididunt ut labore et dolore magna aliqua. Ut enim melh 
-                        nostrud exercitation ullamco laboris.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/passo1-ico.png" alt="Ícone" />
-                    </figure>
-                    <div class="content">
-                        <h3>Passo 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        incididunt ut labore et dolore magna aliqua. Ut enim melh 
-                        nostrud exercitation ullamco laboris.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/passo1-ico.png" alt="Ícone" />
-                    </figure>
-                    <div class="content">
-                        <h3>Passo 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        incididunt ut labore et dolore magna aliqua. Ut enim melh 
-                        nostrud exercitation ullamco laboris.</p>
-                    </div>
-                </div>
-            </div>
+                <? 
+                    $passos = $fields['como_adquirir']['passos'];
+                    
+                    if($passos)
+                    {
+                        foreach($passos as $value)
+                        { 
+                        ?>
+             
+                        <div class="step">
+                            <figure>
+                                <img src="<?php echo $value['icone']['url']; ?>" alt="Ícone" />
+                            </figure>
+                            <div class="content">
+                                <h3><?php echo $value['titulo']; ?></h3>
+                                <p><?php echo $value['texto']; ?></p>
+                            </div>
+                        </div>
+                
+                        <?php }
+                    }
+                    //  var_dump($passos);
+                ?>
+                
 
             <div class="btns">
-                <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Quero Economizar</a>
+                <?php $posts = $fields['como_adquirir']['link'];
+                if( $posts ): ?>
+                    <?php foreach( $posts as $post): // variable must be called $post (IMPORTANT) ?>
+                        <?php setup_postdata($post); ?>
+                        
+                        <a href="<?php the_permalink(); ?>" class="btn callaction"><?php echo $fields['como_adquirir']['texto_do_botao']; ?></a>
+
+                        <?php endforeach; ?>
+                    <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+                <?php endif; ?>
                 <!-- <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Falar com atendente</a> -->
             </div>
             
@@ -195,128 +177,58 @@
                 <h2>Projetos</h2>
                 <h3>Projetos Executados</h3>
             </div>
+
             <div class="itens">
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
+
+                <?php $posts = get_posts(array(
+                    'posts_per_page'	=> -1,
+                    'post_type'			=> 'projetos'
+                ));
+
+                if( $posts ): ?>
+                    
+                    <?php foreach( $posts as $post ): 
+                        
+                        setup_postdata( $post );
+
+                        $imagem = get_field('conteudo_da_lista')['thumb'];
+                        $resumo = wp_trim_words( get_field('conteudo_da_lista' )['resumo'], $num_words = 12, $more = '...' );
+                        
+                        ?>
+                        
+                            <div class="project">
+                                <figure>
+                                    <img src="<?php echo $imagem['url']; ?>" alt="<?php echo $imagem['alt']; ?>">
+                                </figure>
+                                <p>
+                                    <?php echo $resumo; ?>
+                                </p>
+                                <a href="<?php the_permalink(); ?>" class="btn">Ler mais</a>
+                            </div>
+            
+                    <?php endforeach; ?>
+                
+                <?php wp_reset_postdata(); ?>
+
+            <?php endif; ?>
+               
             </div>
         </div>
-    </section> 
+    </section>
 
-   
+    <?php $fields_about = get_fields(10); ?>
     <section class="content-about">
         <div class="wrap">
             <div class="col">
                 <h2>
-                    HÁ X ANOS NO MERCADO LEVANDO
-                    ECONÔMIA PARA SEU BOLSO.
+                    <?php echo $fields_about['sobre']['titulo']; ?>
                 </h2>
-                <p>
-                    Lorem ipsum dolor sit amet, conectetur adipiscing elit, sed eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim minim 
-                    veniam, quis nostrud exercitation ullamco laboris ut aliquip cosequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit cillum dolore 
-                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, conectetur adipiscing elit, sed eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim minim 
-                    veniam, quis nostrud exercitation ullamco laboris ut aliquip cosequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit cillum dolore 
-                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
+                <?php echo $fields_about['sobre']['texto']; ?>
             </div>
             
-            <figure style="background-image:url(<?php echo get_template_directory_uri(); ?>/assets/images/bg-block-example.jpg);"></figure>
+            <figure style="background-image:url(<?php echo $fields_about['sobre']['imagem']['url']; ?>);"></figure>
         </div>
-    </section>
+    </section>  
 
     <section class="section-blog">
         <div class="wrap">
@@ -365,41 +277,32 @@
         </div>
         <div class="partners-list">
             <div class="wrap">
-                <figure class="item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/partner.png" alt="Partner Name">
-                </figure>
-                <figure class="item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/partner.png" alt="Partner Name">
-                </figure>
-                <figure class="item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/partner.png" alt="Partner Name">
-                </figure>
-                <figure class="item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/partner.png" alt="Partner Name">
-                </figure>
-                <figure class="item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/partner.png" alt="Partner Name">
-                </figure>
-                <figure class="item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/partner.png" alt="Partner Name">
-                </figure>
+                <? 
+                    $parceiros = $fields['parceiros'];
+                    
+                    if($parceiros)
+                    {
+                        foreach($parceiros as $value)
+                        { 
+                        ?>
+             
+                        <figure class="item">
+                            <img src="<?php echo $value['imagem']['url']; ?>" alt="<?php echo $value['nome']; ?>">
+                        </figure>
+                
+                        <?php }
+                    }
+                ?>
             </div>
         </div>
     </section>
+
     <section class="map">
         <figure>
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/map.png" alt="Mapa de localização">
+            <img src="<?php echo get_field('localizacao_mapa', 41)['imagem_home']['url']; ?>" alt="Mapa de localização">
         </figure>
     </section>
-    <section class="news">
-        <div class="wrap">
-            <span class="blue">conteúdos exclusivos sobre energia sustentável?</span>
-            <span class="orange">Assine nossa news</span>
-            <div class="form">
-                <?php echo do_shortcode( '[contact-form-7 id="39" title="News"]' ); ?>
-            </div>
-        </div>
-    </section>
+    
 
 </main>
 

@@ -1,87 +1,73 @@
 <?php
     /*Template name: Vantagens */
 	get_header(); 
-	// $fields = get_fields();
+	$fields = get_fields();
 ?>
 
 <main class="main-energia">
     <section class="header-title">
-        <h1>Vantagens</h1>
+        <h1><?php echo $fields['titulo_de_destaque']; ?></h1>
     </section>
 
     <section class="infos-icons icons-benefits">
         <div class="wrap">
-            <p class="description">Lorem ipsum dolor sit amet, conectetur adipiscing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitation ullamco laboris ut aliquip cosequat duis aute irure dolor in reprehenderit in voluptate velit cillum dolore </p>
+            <p class="description"><?php echo $fields['vantagens']['texto']; ?></p>
             <div class="itens-infos">
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-1.png">
-                    </figure>
-                    <h3>Sustentável e Ambiental</h3>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-2.png">
-                    </figure>
-                    <h3>Tecnologia de ponta</h3>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-4.png">
-                    </figure>
-                    <h3>Economia mensal garantida</h3>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-5.png">
-                    </figure>
-                    <h3>Fácil de implementar</h3>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-3.png">
-                    </figure>
-                    <h3>Controle da Energia gerada</h3>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-3.png">
-                    </figure>
-                    <h3>Energia em dias nublados</h3>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-1.png">
-                    </figure>
-                    <h3>Sustentável e Ambiental</h3>
-                </div>
+
+                <? 
+                    $vantagens = get_field('vantagens')['informacoes'];
+                    
+                    if($vantagens)
+                    {
+                        foreach($vantagens as $value)
+                        { 
+                        ?>
+                    
+                        <div class="info">
+                            <figure>
+                                <img src="<?php echo $value['icone']['url']; ?>">
+                            </figure>
+                            <h3><?php echo $value['titulo']; ?></h3>
+                        </div>
+                
+                
+                        <?php }
+                    }
+                    //  var_dump($vantagens);
+                ?>
+                
             </div>
         </div>
         <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Simule Aqui</a>
     </section>
 
+    <?php
+        $fieldsenergy = get_fields(14);
+        // var_dump($fieldsenergy);
+    ?>
+
     <section class="infograph colwidth">
         <div class="col colleft">
             <div class="content">
                 <div class="title-section">
-                    <h2>ENERGIA SOLAR</h2>
-                    <h3>Liberdade Energética</h3>
-                    <p>Lorem ipsum dolor sit amet, conectetur adipiscing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <h2><?php echo $fieldsenergy['energia_solar']['titulo_1']; ?></h2>
+                    <h3><?php echo $fieldsenergy['energia_solar']['titulo_2']; ?></h3>
+                    <p><?php echo $fieldsenergy['energia_solar']['texto']; ?></p>
                 </div>
                 <figure>
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/graph1.png">
+                    <img src="<?php echo $fieldsenergy['energia_solar']['grafico']['url']; ?>">
                 </figure>
             </div>
         </div>
         <div class="col colright">
             <div class="content">
                 <div class="title-section">
-                    <h2>CRESCIMENTO</h2>
-                    <h3>ADESÃO EM MASSA</h3>
-                    <p>Lorem ipsum dolor sit amet, conectetur adipiscing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <h2><?php echo $fieldsenergy['crescimento']['titulo_1']; ?></h2>
+                    <h3><?php echo $fieldsenergy['crescimento']['titulo_1']; ?></h3>
+                    <p><?php echo $fieldsenergy['crescimento']['texto']; ?></p>
                 </div>  
                 <figure>
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/graph2.png">
+                    <img src="<?php echo $fieldsenergy['crescimento']['grafico']['url']; ?>">
                 </figure>
             </div>
         </div>
@@ -93,98 +79,43 @@
                 <h2>Projetos</h2>
                 <h3>Projetos Executados</h3>
             </div>
+
             <div class="itens">
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
-                <div class="project">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/project-figure.png" alt="">
-                    </figure>
-                    <p>
-                        Lorem ipsum dolor amet consectetur 
-                        incididunt ut labore et dolore magna 
-                        nostrud exercitation.
-                    </p>
-                    <a href="#" class="btn">Ler mais</a>
-                </div>
+
+                <?php $posts = get_posts(array(
+                    'posts_per_page'	=> -1,
+                    'post_type'			=> 'projetos'
+                ));
+
+                if( $posts ): ?>
+                    
+                    <?php foreach( $posts as $post ): 
+                        
+                        setup_postdata( $post );
+
+                        $imagem = get_field('conteudo_da_lista')['thumb'];
+                        $resumo = wp_trim_words( get_field('conteudo_da_lista' )['resumo'], $num_words = 12, $more = '...' );
+                        
+                        ?>
+                        
+                            <div class="project">
+                                <figure>
+                                    <img src="<?php echo $imagem['url']; ?>" alt="<?php echo $imagem['alt']; ?>">
+                                </figure>
+                                <p>
+                                    <?php echo $resumo; ?>
+                                </p>
+                                <a href="<?php the_permalink(); ?>" class="btn">Ler mais</a>
+                            </div>
+            
+                    <?php endforeach; ?>
+                
+                <?php wp_reset_postdata(); ?>
+
+            <?php endif; ?>
+               
             </div>
         </div>
-    </section>
 
 </main>
 

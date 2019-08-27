@@ -1,23 +1,22 @@
 <?php
-    /*Template name: Quem Somos */
-	get_header(); 
-	$fields = get_fields();
+    get_header(); 
+    $fields = get_fields();
 ?>
 
 <main class="main-about">
     <section class="header-title">
-        <h1><?php echo $fields['titulo_de_destaque']; ?></h1>
+        <h1><?php the_title(); ?></h1>
     </section>
     <section class="content-about">
         <div class="wrap">
             <div class="col">
                 <h2>
-                    <?php echo $fields['sobre']['titulo']; ?>
+                    <?php echo $fields['projeto']['titulo']; ?>
                 </h2>
-                <?php echo $fields['sobre']['texto']; ?>
+                <?php echo $fields['projeto']['texto']; ?>
             </div>
             
-            <figure style="background-image:url(<?php echo $fields['sobre']['imagem']['url']; ?>);"></figure>
+            <figure style="background-image:url(<?php echo $fields['projeto']['imagem']['url']; ?>);"></figure>
         </div>
     </section>
     <section class="projects">

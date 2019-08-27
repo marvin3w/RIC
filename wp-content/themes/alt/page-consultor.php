@@ -4,14 +4,28 @@
 	// $fields = get_fields();
 ?>
 
-<main class="main-simulation">
+<main class="main-blog">
     <section class="header-title">
         <h1>Área do Consultor</h1>
     </section>
     <section class="consultor-area">
     <?php
         if ( is_user_logged_in() ) {
-            echo 'Welcome, registered user!';
+    ?> 
+        
+        <section class="blog-content">
+			<div class="wrap">
+                <article class="content-blog">
+                    <div class="wrap">
+                    <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
+						the_content();
+					endwhile; endif; ?>	
+                    </div>
+                </div>
+			</div>
+		</section>
+
+    <?php     
         } else {
             echo 'Welcome, visitor!';
         }

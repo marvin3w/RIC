@@ -1,7 +1,9 @@
 @import "reset";
 @import url("./../fonts/stylesheet.css");
+
 $font: "Brandon Grotesque", sans-serif;
 $fr: "Brandon Grotesque", sans-serif;
+
 $primary: #ed8b00;
 $color: #ed8b00;
 $blue: #003a70;
@@ -1969,4 +1971,61 @@ form {
   margin: 0 auto;
 }
 .modal .content form .item {
+}
+
+.menufooter {
+  padding: 30px 0;
+  background-color: $blue;
+  .wrap {
+    display: flex;
+  }
+  .logo {
+    width: 190px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .menu {
+    display: inline-block;
+    width: calc(100% - 200px);
+    vertical-align: middle;
+    text-align: right;
+    position: relative;
+
+    .menu-menu-rodape-container {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    opacity: 1;
+    pointer-events: unset;
+    @media (max-width: 1200px) {
+      opacity: 0;
+      pointer-events: none;
+      display: none;
+    }
+
+    li {
+      display: inline-block;
+      list-style: none;
+      vertical-align: top;
+      a {
+        font-size: 13px;
+        font-family: $font;
+        color: rgb(76, 81, 88);
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 0 18px;
+        vertical-align: top;
+        color: $color;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+  @media (max-width: 1200px) {
+    display: none;
+  }
 }

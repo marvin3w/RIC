@@ -1,53 +1,41 @@
 <?php
     /*Template name: Emergia Solar */
 	get_header(); 
-	// $fields = get_fields();
+	$fields = get_fields();
 ?>
 
 <main class="main-energia">
     <section class="header-title">
-        <h1>Por que Energia Solar?</h1>
+        <h1><?php echo $fields['titulo_de_destaque']; ?></h1>
     </section>
 
     <section class="infos-icons">
         <div class="wrap">
-            <p class="description">Lorem ipsum dolor sit amet, conectetur adipiscing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitation ullamco laboris ut aliquip cosequat duis aute irure dolor in reprehenderit in voluptate velit cillum dolore </p>
+            <p class="description"><?php echo $fields['por_que']['texto']; ?></p>
             <div class="itens-infos">
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-1.png">
-                    </figure>
-                    <h3>ENERGIA SOLAR SUSTENTÁVEL</h3>
-                    <p>Lorem ipsum dolor amet consectetur incididunt nostrud exercitation</p>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-2.png">
-                    </figure>
-                    <h3>Gere sua própria energia</h3>
-                    <p>Lorem ipsum dolor amet consectetur incididunt nostrud exercitation</p>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-3.png">
-                    </figure>
-                    <h3>Energia solar renovável</h3>
-                    <p>Lorem ipsum dolor amet consectetur incididunt nostrud exercitation</p>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-4.png">
-                    </figure>
-                    <h3>Vantagem<br>financeira</h3>
-                    <p>Lorem ipsum dolor amet consectetur incididunt nostrud exercitation</p>
-                </div>
-                <div class="info">
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico-info-5.png">
-                    </figure>
-                    <h3>Valorisa seu imóvel<br>ou empresa</h3>
-                    <p>Lorem ipsum dolor amet consectetur incididunt nostrud exercitation</p>
-                </div>
+
+                <? 
+                    $informacoes = get_field('por_que')['informacoes'];
+                    
+                    if($informacoes)
+                    {
+                        foreach($informacoes as $value)
+                        { 
+                        ?>
+                    
+                            <div class="info">
+                                <figure>
+                                    <img src="<?php echo $value['icone']['url']; ?>">
+                                </figure>
+                                <h3><?php echo $value['titulo']; ?></h3>
+                                <p><?php echo $value['texto']; ?></p>
+                            </div>
+                
+                
+                        <?php }
+                    }
+                    //  var_dump($informacoes);
+                ?>
             </div>
         </div>
     </section>
@@ -56,24 +44,24 @@
         <div class="col colleft">
             <div class="content">
                 <div class="title-section">
-                    <h2>ENERGIA SOLAR</h2>
-                    <h3>Liberdade Energética</h3>
-                    <p>Lorem ipsum dolor sit amet, conectetur adipiscing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <h2><?php echo $fields['energia_solar']['titulo_1']; ?></h2>
+                    <h3><?php echo $fields['energia_solar']['titulo_2']; ?></h3>
+                    <p><?php echo $fields['energia_solar']['texto']; ?></p>
                 </div>
                 <figure>
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/graph1.png">
+                    <img src="<?php echo $fields['energia_solar']['grafico']['url']; ?>">
                 </figure>
             </div>
         </div>
         <div class="col colright">
             <div class="content">
                 <div class="title-section">
-                    <h2>CRESCIMENTO</h2>
-                    <h3>ADESÃO EM MASSA</h3>
-                    <p>Lorem ipsum dolor sit amet, conectetur adipiscing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <h2><?php echo $fields['crescimento']['titulo_1']; ?></h2>
+                    <h3><?php echo $fields['crescimento']['titulo_1']; ?></h3>
+                    <p><?php echo $fields['crescimento']['texto']; ?></p>
                 </div>  
                 <figure>
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/graph2.png">
+                    <img src="<?php echo $fields['crescimento']['grafico']['url']; ?>">
                 </figure>
             </div>
         </div>
@@ -82,50 +70,23 @@
     <section class="howitworks">
         <div class="wrap">
             <div class="title-section">
-                <h2>ENERGIA SOLAR</h2>
-                <h3>Como funciona?</h3>
+                <h2><?php echo $fields['como_funciona']['titulo_1']; ?></h2>
+                <h3><?php echo $fields['como_funciona']['titulo_2']; ?>?</h3>
             </div>
             <div class="cols">
-                <div class="col">
-                    <div class="number">01</div>
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/figure-how-1.png">
-                    </figure>
-                    <p>Durante o dia os painéis produzem
-                    energia para abastecer sua casa
-                    ou negócio</p>
-                </div>
-                <div class="col col2">
-                    <p>Gerando mais energia do que
-                    consumindo,  esta energia éinjetada 
-                    na rede de distribuilção</p>
-    
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/figure-how-2.png">
-                    </figure>
-    
-                    <div class="number">02</div>
-    
-                    <p>Este excedente é transformado
-                    em créditos de energia para
-                    o prorpietário.</p>
-                </div>
-                <div class="col">
-                    <div class="number">03</div>
-                    
-                    <figure>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/figure-how-3.png">
-                    </figure>
-    
-                    <p>Durante à noite, o imóvel utiliza a energia
-                    da rede de distribuição, com os créditos
-                    gerados anteriormente. Se ainda sobrar,
-                    esses poderão ser utilizados em outro 
-                    momento ou em outra propriedade!</p>
-                </div>
+                <?php echo $fields['como_funciona']['conteudo_personalizado']; ?>
             </div>
         </div>
-        <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Simule Aqui</a>
+        <?php $posts = $fields['como_funciona']['link'];
+        
+        if( $posts ): ?>
+            <?php foreach( $posts as $post): // variable must be called $post (IMPORTANT) ?>
+                <?php setup_postdata($post); ?>
+                
+                <a href="<?php the_permalink(); ?>" class="btn callaction"><?php echo $fields['como_funciona']['texto_botao']; ?></a>
+                <?php endforeach; ?>
+            <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+        <?php endif; ?>
     </section>
 
 </main>

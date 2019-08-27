@@ -42,8 +42,9 @@
 
     //Add menu
     register_nav_menus( array(
-        'header_menu' => __('Menu Principal'),
-        'childrens_menu' => __('Childrens Menu'),
+        'header_menu'       => __('Menu Principal'),
+        'footer_menu'       => __('Menu Rodapé'),
+        'childrens_menu'    => __('Childrens Menu'),
     ));
 
     setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');

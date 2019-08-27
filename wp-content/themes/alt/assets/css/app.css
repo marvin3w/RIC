@@ -2055,3 +2055,69 @@ form input[type="submit"] {
   width: 375px;
   margin: 0 auto;
 }
+
+.menufooter {
+  padding: 30px 0;
+  background-color: #003a70;
+}
+
+.menufooter .wrap {
+  display: flex;
+}
+
+.menufooter .logo {
+  width: 190px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.menufooter .menu {
+  display: inline-block;
+  width: calc(100% - 200px);
+  vertical-align: middle;
+  text-align: right;
+  position: relative;
+  opacity: 1;
+  pointer-events: unset;
+}
+
+.menufooter .menu .menu-menu-rodape-container {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 1200px) {
+  .menufooter .menu {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+  }
+}
+
+.menufooter .menu li {
+  display: inline-block;
+  list-style: none;
+  vertical-align: top;
+}
+
+.menufooter .menu li a {
+  font-size: 13px;
+  font-family: "Brandon Grotesque", sans-serif;
+  color: #4c5158;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0 18px;
+  vertical-align: top;
+  color: #ed8b00;
+}
+
+.menufooter .menu li a:hover {
+  color: #fff;
+}
+
+@media (max-width: 1200px) {
+  .menufooter {
+    display: none;
+  }
+}

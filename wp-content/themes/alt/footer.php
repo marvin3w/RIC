@@ -1,3 +1,32 @@
+    <section class="menufooter">
+        <div class="wrap">
+            <a href="<?php echo get_home_url(); ?>" class="logo">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Logo">
+            </a>
+            <nav class="menu">
+                <?php
+                    wp_nav_menu( array(
+                        'theme_location' => 'footer_menu',
+                        'menu_class'     => 'nav',
+                        'echo'           => true,
+                        'fallback_cb'    => 'wp_page_menu',
+                        'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                        'depth'          => 0
+                    ) );
+                ?>
+            </nav>   
+        </div>
+    </section>
+    
+    <section class="news">
+        <div class="wrap">
+            <span class="blue">conteúdos exclusivos sobre energia sustentável?</span>
+            <span class="orange">Assine nossa news</span>
+            <div class="form">
+                <?php echo do_shortcode( '[contact-form-7 id="39" title="News"]' ); ?>
+            </div>
+        </div>
+    </section>
     <!-- Footer -->
     <footer class="site-footer">
         <div class="wrap">
