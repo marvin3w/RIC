@@ -4,7 +4,7 @@
 	$fields = get_fields();
 ?>
 
-<main class="main-energia">
+<main class="main-energia page-benefits">
     <section class="header-title">
         <h1><?php echo $fields['titulo_de_destaque']; ?></h1>
     </section>

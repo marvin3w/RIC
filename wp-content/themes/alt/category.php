@@ -18,9 +18,7 @@
                     while ( have_posts() ) : the_post(); ?>
                     
 					<a href="<?php the_permalink(); ?>" class="post">
-                        <figure>
-                            <img src="<?php echo get_field('imagem')['url'];?>">
-                        </figure>
+                        <figure style="background-image:url(<?php echo get_field('imagem')['url'];?>);"></figure>
                         <h4><?php the_title(); ?></h4>
                         <span class="date"><?php $post_date = get_the_date( 'd.m.Y' ); echo $post_date; ?></span>
                         <p><?php echo get_field('resumo');?></p>
@@ -53,7 +51,7 @@
 
 					<div class="whats">
                     <span class="text">ou pelo whats</span>
-                    <a href="#" class="btn btn-whats">
+                    <a href="https://wa.me/<?php echo preg_replace("/[^0-9]/", "", get_field('contatos', 41)['telefone_2']); ?>?text=Olá" class="btn btn-whats">
                         <i><img src="<?php echo get_template_directory_uri(); ?>/assets/images/whats-ico.png" alt=""></i>
                         <span>Atendimento</span>
                     </a>

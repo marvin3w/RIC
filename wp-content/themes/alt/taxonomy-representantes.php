@@ -21,22 +21,24 @@
 			<div class="wrap">
                 <div class="col infos">
 
-                    <?php 
+                <?php 
                         $terms = get_terms([
                             'taxonomy' => 'representantes',
                             'hide_empty' => false,
                         ]);
                     ?>
-                    <form action="">
-                        <select name="" id="selectrepresentantes">
-                            <option value="">Estado</option>
-                            <?php foreach ($terms as $term) {
-                            
-                                // <option value="rs">Rio Grande do Sul</option>
-                                echo '<option value="' . $term->slug . '">' . $term->name . '</option>'; 
-                            
-                             } ?>
-                        </select>
+                    <form action="" class="changepage">
+                        <span class="select-arrow">
+                            <select name="" id="selectrepresentantes">
+                                <option value="">Estado</option>
+                                <?php foreach ($terms as $term) {
+                                
+                                    // <option value="rs">Rio Grande do Sul</option>
+                                    echo '<option value="' . get_term_link( $term ) . '">' . $term->name . '</option>'; 
+                                
+                                 } ?>
+                            </select>
+                        </span>
                     </form>
 
                     <h2 class="estado"><?php $name = single_cat_title(); ?></h2>
@@ -96,7 +98,7 @@
                                 wp_reset_postdata(); ?>
                         <?php } else {  ?>
 
-                            <p><?php _e( 'Desculpe, nenhum representante cadastrado nesse estado. Busque o contato de um representante em outro estado de sua região ou ligue para +55 (51) 3325.3001 para mais informações.' ); ?></p>
+                            <p><?php _e( 'Desculpe, nenhum representante cadastrado nesse estado. Busque o contato de um representante em outro estado de sua região ou ligue para +55 (51) 4042 4331 para mais informações.' ); ?></p>
                         <?php } ?>
                         
                      </div> <!-- End result -->

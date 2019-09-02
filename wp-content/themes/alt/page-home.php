@@ -46,10 +46,10 @@
         
     </section>
 
-    <section class="infograph colwidth">
+    <section class="infograph colwidth sectionfirst">
         <div class="col colleft">
             <div class="content">
-                <div class="title-section">
+                <div class="title-section firstsection">
                     <h2><?php echo $fields['chamada']['titulo_1']; ?></h2>
                     <h3><?php echo $fields['chamada']['titulo_2']; ?></h3>
                     <p><?php echo $fields['chamada']['texto']; ?></p>
@@ -78,7 +78,7 @@
                 
                 <div class="whats">
                     <span class="text">ou pelo whats</span>
-                    <a href="#" class="btn btn-whats">
+                    <a href="https://wa.me/<?php echo preg_replace("/[^0-9]/", "", get_field('contatos', 41)['telefone_2']); ?>?text=Olá" class="btn btn-whats">
                         <i><img src="<?php echo get_template_directory_uri(); ?>/assets/images/whats-ico.png" alt=""></i>
                         <span>Atendimento por Whatsapp</span>
                     </a>
@@ -119,7 +119,7 @@
                 
             </div>
         </div>
-        <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Simule Aqui</a>
+        <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Quero Economizar</a>
     </section>
 
     <section class="content-steps">
@@ -155,17 +155,22 @@
                 
 
             <div class="btns">
-                <?php $posts = $fields['como_adquirir']['link'];
+                <?php 
+                // $posts = $fields['como_adquirir']['link'];
+                $posts = null;
                 if( $posts ): ?>
                     <?php foreach( $posts as $post): // variable must be called $post (IMPORTANT) ?>
                         <?php setup_postdata($post); ?>
                         
-                        <a href="<?php the_permalink(); ?>" class="btn callaction"><?php echo $fields['como_adquirir']['texto_do_botao']; ?></a>
+                         <a href="<?php the_permalink(); ?>" class="btn callaction"><?php echo $fields['como_adquirir']['texto_do_botao']; ?></a>
 
                         <?php endforeach; ?>
                     <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
                 <?php endif; ?>
-                <!-- <a href="<?php echo get_home_url(); ?>/simule-aqui/" class="btn callaction">Falar com atendente</a> -->
+                <div class="callaction">
+                    <a href="" class="btn" data-modal="orcamento">Quero adquirir</a>
+                    <a href="https://wa.me/<?php echo preg_replace("/[^0-9]/", "", get_field('contatos', 41)['telefone_2']); ?>?text=Olá" class="btn" target="_blank">Falar com atendente</a>
+                </div>
             </div>
             
         </div>
@@ -216,17 +221,22 @@
         </div>
     </section>
 
-    <?php $fields_about = get_fields(10); ?>
-    <section class="content-about">
+    
+    <section class="content-about content-facil">
         <div class="wrap">
+            <figure style="background-image:url(<?php echo $fields['facil']['imagem']['url']; ?>);"></figure>
+            
             <div class="col">
-                <h2>
-                    <?php echo $fields_about['sobre']['titulo']; ?>
-                </h2>
-                <?php echo $fields_about['sobre']['texto']; ?>
+                <!-- <h2>
+                    <?php echo $fields['facil']['titulo']; ?>
+                </h2> -->
+                <div class="title-section">
+                    <h2><?php echo $fields['facil']['titulo_pequeno']; ?></h2>
+                    <h3><?php echo $fields['facil']['titulo']; ?></h3>
+                </div>
+                <?php echo $fields['facil']['descricao']; ?>
             </div>
             
-            <figure style="background-image:url(<?php echo $fields_about['sobre']['imagem']['url']; ?>);"></figure>
         </div>
     </section>  
 
@@ -242,8 +252,11 @@
                 <?php
                     $args = array(
                         'posts_per_page'	=> 12,
+                        'category_name' => 'na-midia',
                         'post_type'			=> 'post'
                     );
+                    
+                    $index = 0;
 
                     // A Consulta
                     query_posts( $args );
@@ -251,15 +264,24 @@
                     // O Loop
                     while ( have_posts() ) : the_post(); ?>
 
-                    <a href="<?php the_permalink(); ?>" class="post">
-                        <figure>
-                            <img src="<?php echo get_field('imagem')['url'];?>">
-                        </figure>
-                        <span class="date"><?php $post_date = get_the_date( 'd.m.Y' ); echo $post_date; ?></span>
-                        <p><?php echo get_field('resumo');?></p>
+                    <a href="<?php the_permalink(); ?>" class="post <?php echo ($index == 0) ? 'first' : '' ;?>">
+                        <?php if($index == 0){ ?>
+                            <figure style="background-image: url(<?php echo get_field('imagem')['url'];?>);">
+                                <!-- <img src="<?php // echo get_field('imagem')['url'];?>"> -->
+                            </figure>    
+                        <?php  } else { ?>
+                            <figure style="background-image: url(<?php echo get_field('imagem')['url'];?>);">
+                                <!-- <img src="<?php // echo get_field('imagem')['url'];?>"> -->
+                            </figure>    
+                        <?php  } ?>
+                        <div class="text">
+                            <span class="date"><?php $post_date = get_the_date( 'd.m.Y' ); echo $post_date; ?></span>
+                            <p><?php echo get_field('resumo');?></p>
+                        </div>
                     </a>
 
                     <?php
+                    $index++;
                     endwhile;
 
                     // Redefinindo Consulta
@@ -269,6 +291,77 @@
             
         </div>
         
+    </section>
+
+    <section class="infograph colwidth videoquotes">
+        <div class="col colleft">
+            <div class="content">
+                <div class="title-section firstsection">
+                    <h2><?php echo $fields['depoimentos']['titulo_1']; ?></h2>
+                    <h3><?php echo $fields['depoimentos']['titulo_2']; ?></h3>
+                </div>
+
+                <div class="quotes">
+                    <?php if($fields['depoimentos']['depoimento_1']['id_do_video']){?>
+                        <a href="#" class="quote video" data-videoid="<?php echo $fields['depoimentos']['depoimento_1']['id_do_video'];?>">
+                    <?php } else {  ?>
+                        <a href="<?php echo $fields['depoimentos']['depoimento_1']['id_do_video'];?>" class="quote">
+                    <?php }  ?>
+                        <figure>
+                            <img src="<?php echo $fields['depoimentos']['depoimento_1']['imagem']; ?>" alt="">
+                        </figure>
+                        <p>
+                            <?php echo $fields['depoimentos']['depoimento_1']['texto']; ?>
+                        </p>
+                    </a>
+                    <?php if($fields['depoimentos']['depoimento_2']['id_do_video']){?>
+                        <a href="#" class="quote video" data-videoid="<?php echo $fields['depoimentos']['depoimento_2']['id_do_video'];?>">
+                    <?php } else {  ?>
+                        <a href="<?php echo $fields['depoimentos']['depoimento_2']['id_do_video'];?>" class="quote">
+                    <?php }  ?>
+                        <figure>
+                            <img src="<?php echo $fields['depoimentos']['depoimento_2']['imagem']; ?>" alt="">
+                        </figure>
+                        <p>
+                            <?php echo $fields['depoimentos']['depoimento_2']['texto']; ?>
+                        </p>
+                    </a>
+                    
+                </div>
+                <a href="" class="btn" data-modal="depoimento">Deixe seu depoimento</a>
+            </div>
+        </div>
+        <div class="col colright">
+            <div class="content form-contact-home">
+                <div class="title-section">
+                    <h2><?php echo $fields['videos']['titulo_1']; ?></h2>
+                    <h3><?php echo $fields['videos']['titulo_2']; ?></h3>
+                </div>
+
+                <div class="videos">
+                    
+                    <a href="#" class="quote video" data-videoid="<?php echo $fields['videos']['video_1']['id_do_video'];?>">
+                        <figure>
+                            <img src="<?php echo $fields['videos']['video_1']['imagem']; ?>" alt="">
+                        </figure>
+                        <p>
+                            <?php echo $fields['videos']['video_1']['texto']; ?>
+                        </p>
+                    </a>
+                    <a href="#" class="quote video" data-videoid="<?php echo $fields['videos']['video_2']['id_do_video'];?>">
+                        <figure>
+                            <img src="<?php echo $fields['videos']['video_2']['imagem']; ?>" alt="">
+                        </figure>
+                        <p>
+                            <?php echo $fields['videos']['video_2']['texto']; ?>
+                        </p>
+                    </a>
+                    
+                </div>
+
+                <a href="<?php echo $fields['videos']['link_do_canal']; ?>" class="btn" target="_blank">Ver todos os vídeos</a>
+            </div>
+        </div>
     </section>
 
     <section class="partners">
@@ -296,11 +389,14 @@
             </div>
         </div>
     </section>
-
+    
+    
     <section class="map">
-        <figure>
-            <img src="<?php echo get_field('localizacao_mapa', 41)['imagem_home']['url']; ?>" alt="Mapa de localização">
-        </figure>
+        <a href="<?php echo get_field('localizacao_mapa', 41)['link_localizacao_google_maps']; ?>" target="_blank">
+            <figure>
+                <img src="<?php echo get_field('localizacao_mapa', 41)['imagem_home']['url']; ?>" alt="Mapa de localização">
+            </figure>
+        </a>
     </section>
     
 

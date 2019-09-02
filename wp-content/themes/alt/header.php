@@ -16,9 +16,34 @@
 
     <?php wp_head(); ?>
 
+    <meta name="author" content="Altgrupo"> 
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MN8QHC3');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146762221-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-146762221-1');
+    </script>
+
 </head>
 
 <body <?php body_class(); ?>>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MN8QHC3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <header class="header-main">
         <div class="wrap">
@@ -42,20 +67,30 @@
                     ?>
                 </nav>
             </div>
-    
+            <?php $fields_contact = get_fields(41); ?>
             <nav class="contacts-headers">
                 <div class="phones">
-                    <a href="tel:+555133253001"><i></i> 51. 3325.3001</a>
-                    <a href="tel:+555133253001"><i></i> 51. 3325.3001</a>
+                    <a href="tel:<?php echo preg_replace("/[^0-9]/", "", $fields_contact['contatos']['telefone_1']) ;?>">
+                        <i><img src="<?php echo get_template_directory_uri(); ?>/assets/images/phone-ico.png" alt=""></i> <span><?php echo $fields_contact['contatos']['telefone_1']; ?></span>
+                    </a>
+                    <?php if($fields_contact['contatos']['telefone_2']): ?>
+                        <a href="tel:<?php echo preg_replace("/[^0-9]/", "", $fields_contact['contatos']['telefone_2']) ;?>">
+                            <i><img src="<?php echo get_template_directory_uri(); ?>/assets/images/phone-ico.png" alt=""></i> <span><?php echo $fields_contact['contatos']['telefone_2']; ?></span>
+                        </a>
+                    <?php endif; ?>
                     <?php
                         if ( is_user_logged_in() ) { ?>
                     
-                        <a href="<?php echo get_home_url(); ?>/area-do-consultor/"><i></i> Área do Consultor</a>
+                        <a href="<?php echo get_home_url(); ?>/area-do-consultor/">
+                            <i><img src="<?php echo get_template_directory_uri(); ?>/assets/images/user-ico.png" alt=""></i> <span>Área do Consultor</span>
+                        </a>
                     
                     <?php    
                         } else { ?>
 
-                            <a href="<?php echo get_home_url(); ?>/wp-login.php"><i></i> Área do Consultor</a>
+                            <a href="<?php echo get_home_url(); ?>/wp-login.php">
+                                <i><img src="<?php echo get_template_directory_uri(); ?>/assets/images/user-ico.png" alt=""></i> <span>Área do Consultor</span>
+                            </a>
                     <?php 
                         }
                     ?>
@@ -83,8 +118,14 @@
 
         <nav class="contacts-headers-mobile">
             <div class="phones">
-                <a href="tel:+555133253001"><i></i> 51. 3325.3001</a>
-                <a href="tel:+555133253001"><i></i> 51. 3325.3001</a>
+                <a href="tel:<?php echo preg_replace("/[^0-9]/", "", $fields_contact['contatos']['telefone_1']) ;?>">
+                    <span><?php echo $fields_contact['contatos']['telefone_1']; ?></span>
+                </a>
+                <?php if($fields_contact['contatos']['telefone_2']): ?>
+                    <a href="tel:<?php echo preg_replace("/[^0-9]/", "", $fields_contact['contatos']['telefone_2']) ;?>">
+                        <span><?php echo $fields_contact['contatos']['telefone_2']; ?></span>
+                    </a>
+                <?php endif; ?>
                 <?php
                     if ( is_user_logged_in() ) { ?>
                 

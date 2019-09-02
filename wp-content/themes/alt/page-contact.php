@@ -10,7 +10,9 @@
     </section>
 
     <section class="section-contato">
-        <figure style="background-image:url(<?php echo $fields['localizacao_mapa']['imagem_pagina_de_contato']['url']; ?>)"></figure>
+        <a href="<?php echo $fields['localizacao_mapa']['link_localizacao_google_maps']; ?>" target="_blank">
+            <figure style="background-image:url(<?php echo $fields['localizacao_mapa']['imagem_pagina_de_contato']['url']; ?>)"></figure>
+        </a>
         <div class="wrap">
             <div class="col">
                 <h2>Contato</h2>

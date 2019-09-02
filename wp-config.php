@@ -20,7 +20,7 @@
 
 // ** Configurações do MySQL - Você pode pegar estas informações com o serviço de hospedagem ** //
 /** O nome do banco de dados do WordPress */
-define('DB_NAME', 'ric');
+define('DB_NAME', 'bkp_ric');
 
 /** Usuário do banco de dados MySQL */
 define('DB_USER', 'root');
@@ -90,6 +90,8 @@ $table_prefix = 'ric_';
  * @link https://codex.wordpress.org/pt-br:Depura%C3%A7%C3%A3o_no_WordPress
  */
 define('WP_DEBUG', false);
+
+define ('WPCF7_AUTOP', false );
 
 /* Isto é tudo, pode parar de editar! :) */
 

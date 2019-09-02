@@ -17,6 +17,7 @@
 					endif;
 					?>	
 					</article>
+					<?php comments_template(); ?>
 				</div>
 
 				<div class="contact content-col2">
@@ -34,12 +35,12 @@
 					<?php echo do_shortcode( '[contact-form-7 id="90" title="Contato"]' ); ?>
 
 					<div class="whats">
-                    <span class="text">ou pelo whats</span>
-                    <a href="#" class="btn btn-whats">
-                        <i><img src="<?php echo get_template_directory_uri(); ?>/assets/images/whats-ico.png" alt=""></i>
-                        <span>Atendimento</span>
-                    </a>
-                </div>
+							<span class="text">ou pelo whats</span>
+							<a href="https://wa.me/<?php echo preg_replace("/[^0-9]/", "", get_field('contatos', 41)['telefone_2']); ?>?text=Olá" class="btn btn-whats">
+									<i><img src="<?php echo get_template_directory_uri(); ?>/assets/images/whats-ico.png" alt=""></i>
+									<span>Atendimento</span>
+							</a>
+					</div>
 				</div>
 			</div>
 		</section>

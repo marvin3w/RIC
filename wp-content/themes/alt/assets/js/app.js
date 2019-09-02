@@ -5,6 +5,21 @@ function togglemenu() {
   menu.classList.toggle("active");
 }
 
+var range = document.querySelector(".wpcf7-range"),
+  output = document.querySelector(".result");
+
+if (range) {
+  output.innerHTML = "R$ " + range.value;
+  // use 'change' instead to see the difference in response
+  range.addEventListener(
+    "input",
+    function() {
+      output.innerHTML = "R$ " + range.value;
+    },
+    false
+  );
+}
+
 (function($) {
   $(document).ready(function() {
     console.log("We're ready");
@@ -47,6 +62,39 @@ function togglemenu() {
       return false;
     });
 
+    $(".changepage select").on("change", function() {
+      var url = $(this).val(); // get selected value
+      if (url) {
+        // require a URL
+        window.location = url; // redirect
+      }
+      return false;
+    });
+
+    $(document).on("click", ".video[data-videoid]", function() {
+      var idvideo = $(this).data("videoid");
+      console.log(idvideo);
+      var videourl =
+        "https://www.youtube.com/embed/" +
+        idvideo +
+        "?autoplay=1&modestbranding=1&showinfo=0&rel=0&cc_load_policy=1&iv_load_policy=3&fs=0&disablekb=1";
+
+      $(".modalvideo").addClass("active");
+
+      $(".modalvideo iframe").attr("src", videourl);
+
+      console.log("teste");
+    });
+
+    $(document).on(
+      "click",
+      ".modalvideo .overlay, .modalvideo .close",
+      function() {
+        $(".modalvideo").removeClass("active");
+        $(".modalvideo iframe").attr("src", " ");
+      }
+    );
+
     $(".painel-home").slick({
       dots: true,
       arrows: false,
@@ -54,7 +102,7 @@ function togglemenu() {
       slidesToScroll: 1
     });
 
-    $(".projects .itens, .section-blog .slick").slick({
+    $(".projects .itens").slick({
       arrows: false,
       responsive: [
         {
@@ -73,6 +121,53 @@ function togglemenu() {
             slidesToScroll: 3,
             infinite: true,
             dots: true
+          }
+        },
+        {
+          breakpoint: 700,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 510,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
+    });
+
+    $(".section-blog .slick").slick({
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 4024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            infinite: true,
+            dots: true,
+            variableWidth: true
+          }
+        },
+        {
+          breakpoint: 1108,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true,
+            variableWidth: false
           }
         },
         {
@@ -130,9 +225,16 @@ function togglemenu() {
   });
 })(jQuery);
 
-document.getElementById("arquivo").onchange = function() {
-  document.getElementById("arquivo").value = this.value.replace(
-    "C:\\fakepath\\",
-    ""
-  );
-};
+// document.getElementById("arquivo").onchange = function() {
+//   document.getElementById("uploadFile").value = this.value.replace(
+//     "C:\\fakepath\\",
+//     ""
+//   );
+
+$("#arquivo").change(function() {
+  var path = $("#arquivo")
+    .val()
+    .replace("C:\\fakepath\\", "");
+  $("#uploadFile").val(path);
+  // console.log(path);
+});
