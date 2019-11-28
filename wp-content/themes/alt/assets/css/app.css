@@ -48,8 +48,6 @@ a:hover {
 
 .wp__gradient, .whats .btn-whats, .main-blog .blog-content .whats .btn-whats {
   background: #30b943;
-  background: -moz-linear-gradient(45deg, #30bb43 1%, #51cd5d 100%);
-  background: -webkit-linear-gradient(45deg, #30bb43 1%, #51cd5d 100%);
   background: linear-gradient(45deg, #30bb43 1%, #51cd5d 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30b943', endColorstr='#52cd5f',GradientType=1 );
 }
@@ -82,16 +80,26 @@ input[type="submit"],
   font-size: 13px;
   border: 0;
   cursor: pointer;
+  -webkit-transition: all 0.17s ease;
   transition: all 0.17s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 input[type="submit"]:hover,
 .btn:hover {
-  background-color: #003a70;
+  background-color: #ff0015;
   -webkit-box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.21);
-  -moz-box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.21);
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.21);
+  -webkit-transform: scale(1.03);
   transform: scale(1.03);
+}
+
+input[type="submit"].btn-white:hover,
+.btn.btn-white:hover {
+  color: #ed8b00;
+  background-color: #fff;
 }
 
 .main-404 {
@@ -103,6 +111,7 @@ input[type="submit"]:hover,
   position: absolute;
   top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -55%);
   transform: translate(-50%, -55%);
 }
 
@@ -110,7 +119,7 @@ input[type="submit"]:hover,
   font-size: 125px;
   text-align: center;
   font-family: "Brandon Grotesque", sans-serif;
-  color: #003a70;
+  color: #ff0015;
 }
 
 .main-404 .wrap .text p {
@@ -215,19 +224,43 @@ input[type="submit"]:hover,
   max-width: 100%;
 }
 
+.content-blog .wp-block-column h2,
+.content-blog .wp-block-column h3,
+.content-blog .wp-block-column h4,
+.content-blog .wp-block-column h5,
+.content-blog .wp-block-column h6 {
+  margin-top: 30px;
+}
+
+.content-blog .wp-block-separator {
+  width: 74px;
+  height: 5px;
+  border: 0;
+  background: #848484;
+  margin-bottom: 25px;
+}
+
 .content-blog .wp-block-file {
   display: table;
   margin-bottom: unset;
   margin-top: 20px;
   margin-left: 0;
   left: 0;
-  text-align: right;
+  text-align: left;
   width: 100%;
   position: relative;
+  padding-right: 80px;
+}
+
+.content-blog .wp-block-file br {
+  display: none;
 }
 
 .content-blog .wp-block-file a:not(.wp-block-file__button) {
-  display: none;
+  font-size: 18px;
+  font-family: "Brandon Grotesque", sans-serif;
+  color: #191919;
+  line-height: 21px;
 }
 
 .content-blog .wp-block-file .wp-block-file__button {
@@ -237,12 +270,13 @@ input[type="submit"]:hover,
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1.538;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   background-color: #ed8b00;
   padding: 7px 12px;
   border-radius: 3px;
-  display: table;
-  left: 0;
-  margin-left: 0;
 }
 
 .menu-mobile {
@@ -251,27 +285,35 @@ input[type="submit"]:hover,
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background: url(./../images/bg-col.jpg) no-repeat;
+  background-size: cover;
+  background-color: #ed8b00;
   pointer-events: none;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.3s ease;
   z-index: -1;
+  opacity: 0;
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .menu-mobile.active {
   z-index: 9;
   pointer-events: unset;
   opacity: 1;
+  -webkit-transform: scale(1);
   transform: scale(1);
 }
 
 .menu-mobile .nav-mobile .nav {
   display: block;
+  -ms-flex-wrap: unset;
   flex-wrap: unset;
   height: 60vh;
   top: 50%;
   left: 50%;
+  margin-top: -35px;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   position: absolute;
 }
@@ -281,22 +323,27 @@ input[type="submit"]:hover,
   font-family: "Brandon Grotesque", sans-serif;
   font-weight: 600;
   text-align: center;
-  height: 10%;
+  height: 11%;
   position: relative;
   font-family: "Brandon Grotesque", sans-serif;
+  font-size: 21px;
+  text-transform: uppercase;
 }
 
 .menu-mobile .nav-mobile a {
-  color: #2e363e;
+  color: #ff0015;
   top: 50%;
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   position: relative;
+  text-decoration: underline;
 }
 
 .menu-mobile .social {
   position: absolute;
   left: 50%;
   bottom: 30px;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   border: #ed8b00 2px solid;
   padding: 7px 10px;
@@ -309,6 +356,7 @@ input[type="submit"]:hover,
 
 .menu-mobile .social a svg path {
   fill: #ed8b00;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 
@@ -342,6 +390,7 @@ input[type="submit"]:hover,
   position: absolute;
   bottom: 20px;
   left: 50%;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 
@@ -351,8 +400,11 @@ input[type="submit"]:hover,
   text-align: center;
   position: relative;
   font-family: "Brandon Grotesque", sans-serif;
-  color: #2e363e;
+  color: #ff0015;
   padding: 6px;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-decoration: underline;
 }
 
 .menu-mobile .close {
@@ -360,6 +412,10 @@ input[type="submit"]:hover,
   top: 20px;
   right: 20px;
   cursor: pointer;
+}
+
+.menu-mobile .close svg path {
+  fill: #ff0015;
 }
 
 .title-section h2 {
@@ -375,7 +431,7 @@ input[type="submit"]:hover,
 .title-section h3 {
   font-size: 30px;
   font-family: "Brandon Grotesque", sans-serif;
-  color: #003a70;
+  color: #ff0015;
   font-weight: bold;
   font-style: italic;
   text-transform: uppercase;
@@ -428,6 +484,7 @@ form input[type="text"] {
   line-height: 40px;
   width: 375px;
   max-width: 100%;
+  -webkit-appearance: none;
   font-size: 16px;
   font-family: "Brandon Grotesque", sans-serif;
   color: #aaaaaa;
@@ -471,6 +528,7 @@ form .select-arrow::before {
   height: 12px;
   top: 50%;
   right: 2px;
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
@@ -548,7 +606,35 @@ form #arquivo {
   left: 0;
   position: absolute;
   vertical-align: middle;
-  z-index: 9;
+  z-index: 99;
+}
+
+.header-main.fixed {
+  position: fixed;
+  background-color: #ff0015;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.header-main.fixed .logo {
+  width: 100px;
+}
+
+.header-main.fixed .wrap {
+  height: 70px;
+}
+
+.header-main.fixed .menu {
+  display: none;
+}
+
+.header-main.fixed .contacts-headers {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: calc(100% - 140px);
+  left: unset;
 }
 
 .header-main .wrap {
@@ -559,16 +645,19 @@ form #arquivo {
 .header-main .burg-menu {
   position: absolute;
   top: 50%;
-  right: 30px;
+  right: 10px;
+  -webkit-transform: translate(0, -50%);
   transform: translate(0, -50%);
   opacity: 0;
   pointer-events: none;
+  z-index: -1;
 }
 
 @media (max-width: 1200px) {
   .header-main .burg-menu {
     opacity: 1;
     pointer-events: unset;
+    z-index: 1;
   }
 }
 
@@ -579,6 +668,7 @@ form #arquivo {
 .header-main .block-menu {
   position: absolute;
   top: 50%;
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   width: calc(100% - 30px);
 }
@@ -588,6 +678,7 @@ form #arquivo {
   width: 170px;
   vertical-align: middle;
   margin-right: 20px;
+  transition: all 0.2s ease;
 }
 
 .header-main .logo img {
@@ -619,6 +710,7 @@ form #arquivo {
   .header-main .menu {
     opacity: 0;
     pointer-events: none;
+    z-index: -1;
     display: none;
   }
 }
@@ -635,13 +727,53 @@ form #arquivo {
   color: #4c5158;
   font-weight: bold;
   text-transform: uppercase;
-  padding: 0 14px;
+  padding: 0 10px;
   vertical-align: top;
   color: #fff;
+  height: 30px;
+  display: inline-block;
+  line-height: 30px;
+  overflow: hidden;
+  position: relative;
+}
+
+.header-main .menu li a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -105%;
+  top: 0;
+  display: inline-block;
+  background-color: #fff;
+  z-index: -1;
+  transition: all 0.25s ease;
+}
+
+.header-main .menu li a:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -105%;
+  top: 90%;
+  display: inline-block;
+  background-color: #ed8b00;
+  z-index: -1;
+  transition: all 0.25s ease 0.14s;
 }
 
 .header-main .menu li a:hover {
   color: #ed8b00;
+}
+
+.header-main .menu li a:hover:before, .header-main .menu li a:hover:after {
+  left: 0;
+  transition: all 0.25s ease 0.14s;
+}
+
+.header-main .menu li a:hover:after {
+  transition: all 0.25s ease 0s;
 }
 
 .header-main .ico-home a {
@@ -661,9 +793,16 @@ form #arquivo {
 
 @media (max-width: 1200px) {
   .header-main .contacts-headers {
-    opacity: 0;
-    pointer-events: none;
-    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+  }
+  .header-main .contacts-headers a {
+    display: none !important;
+  }
+  .header-main .contacts-headers a:first-child {
+    display: block !important;
   }
 }
 
@@ -714,8 +853,16 @@ form #arquivo {
   vertical-align: middle;
 }
 
+.header-main .contacts-headers .phones a.btn:hover {
+  transform: none;
+  -webkit-animation: hvr-wobble-horizontal 0.6s ease-in-out 1;
+  -moz-animation: hvr-wobble-horizontal 0.6s ease-in-out 1;
+  -ms-animation: hvr-wobble-horizontal 0.6s ease-in-out 1;
+  animation: hvr-wobble-horizontal 0.6s ease-in-out 1;
+}
+
 .site-footer {
-  background: #003a70;
+  background: #ff0015;
   padding-top: 40px;
   padding-bottom: 40px;
 }
@@ -892,7 +1039,7 @@ form #arquivo {
 .colwidth .col .content figure {
   width: 100%;
   text-align: center;
-  padding: 25px 0 0 0;
+  padding: 25px 0 8px 0;
 }
 
 .colwidth .col .content figure img {
@@ -947,16 +1094,26 @@ form #arquivo {
   }
 }
 
-.videoquotes.colwidth .col .content .quotes .quote {
-  opacity: 0.1;
-  pointer-events: none;
-}
-
 .videoquotes.colwidth .col .content .videos .quote,
 .videoquotes.colwidth .col .content .quotes .quote {
   display: inline-block;
   width: 49%;
   padding: 0 15px 0 0;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+.videoquotes.colwidth .col .content .videos .quote p,
+.videoquotes.colwidth .col .content .quotes .quote p {
+  overflow-wrap: break-word;
+}
+
+.videoquotes.colwidth .col .content .videos .quote figure {
+  padding: 0 0 74% 0;
+  margin-top: 35px;
+  margin-bottom: 14px;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 
 .videoquotes.colwidth .col.colleft {
@@ -966,7 +1123,7 @@ form #arquivo {
 }
 
 .videoquotes.colwidth .col.colleft .btn {
-  background-color: #003a70;
+  background-color: #ff0015;
   display: table;
   margin: 45px auto 0;
 }
@@ -989,7 +1146,7 @@ form #arquivo {
 }
 
 .videoquotes.colwidth .col.colright .btn {
-  background-color: #003a70;
+  background-color: #ff0015;
   display: table;
   margin: 45px auto 0;
 }
@@ -1033,25 +1190,28 @@ form #arquivo {
   color: white;
   height: 45px;
   width: 45px;
+  -webkit-transition: all 0.5s;
   transition: all 0.5s;
   background-color: #ed8b00;
   line-height: 45px;
   text-align: center;
+  -webkit-transition: all 0.17s ease;
   transition: all 0.17s ease;
   position: relative;
 }
 
 .socials > li > a:hover {
-  background-color: #003a70;
+  background-color: #ff0015;
   -webkit-box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.21);
-  -moz-box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.21);
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.21);
+  -webkit-transform: scale(1.03);
   transform: scale(1.03);
 }
 
 .slick-dots {
   bottom: -25px;
   left: 50%;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   width: 1138px;
   max-width: 100%;
@@ -1077,6 +1237,7 @@ form #arquivo {
 .painel-home .slick-dots {
   bottom: 25px;
   left: 50%;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   width: 1138px;
   max-width: 100%;
@@ -1152,12 +1313,14 @@ form #arquivo {
   display: block;
   height: 90vh;
   position: relative;
+  background-position: 50%;
 }
 
 .header-title.painel-home .wrap {
   position: absolute;
   top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
@@ -1230,7 +1393,7 @@ form #arquivo {
 .main-home .content-about .col .title-section h3 {
   font-size: 30px;
   font-family: "Brandon Grotesque", sans-serif;
-  color: #003a70;
+  color: #ff0015;
   font-weight: bold;
   font-style: italic;
   text-transform: uppercase;
@@ -1247,7 +1410,7 @@ form #arquivo {
 .content-about .col h2 {
   font-size: 30px;
   font-family: "Brandon Grotesque", sans-serif;
-  color: #003a70;
+  color: #ff0015;
   font-weight: bold;
   font-style: italic;
   text-transform: uppercase;
@@ -1266,7 +1429,7 @@ form #arquivo {
 .content-about .col p b {
   font-size: 21px;
   font-family: "Brandon Grotesque", sans-serif;
-  color: #003a70;
+  color: #ff0015;
   font-style: italic;
   font-weight: bold;
   line-height: 1;
@@ -1352,6 +1515,7 @@ form #arquivo {
     position: absolute;
     height: 230px;
     top: 100%;
+    -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
     left: 0;
   }
@@ -1436,7 +1600,8 @@ form #arquivo {
 }
 
 .projects .itens .project {
-  padding: 0 10px;
+  padding: 0 10px 50px;
+  position: relative;
 }
 
 .projects .itens .project figure {
@@ -1456,8 +1621,9 @@ form #arquivo {
 }
 
 .projects .itens .project a {
-  display: none;
-  margin-top: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .section-blog {
@@ -1489,6 +1655,8 @@ form #arquivo {
 }
 
 .section-blog .slick .slick-track {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -1618,8 +1786,13 @@ form #arquivo {
 }
 
 .infos-icons .itens-infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
 }
 
@@ -1642,6 +1815,7 @@ form #arquivo {
   position: absolute;
   top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
@@ -1749,7 +1923,11 @@ form #arquivo {
 
 .partners .partners-list .wrap {
   padding-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -1761,6 +1939,7 @@ form #arquivo {
   position: relative;
   left: 50%;
   top: 50%;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   max-width: 100%;
   max-height: 100%;
@@ -1768,7 +1947,10 @@ form #arquivo {
 
 @media (max-width: 800px) {
   .partners .partners-list .wrap {
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
   }
 }
@@ -1791,7 +1973,7 @@ form #arquivo {
 .news .wrap .blue {
   font-size: 13px;
   font-family: "Brandon Grotesque", sans-serif;
-  color: #003a70;
+  color: #ff0015;
   font-weight: bold;
   text-transform: uppercase;
   line-height: 2.308;
@@ -1877,7 +2059,7 @@ form #arquivo {
   display: table;
   margin: 0;
   float: right;
-  background-color: #003a70;
+  background-color: #ff0015;
 }
 
 .main-home .form-contact-home form {
@@ -1886,6 +2068,8 @@ form #arquivo {
 }
 
 .main-home .colwidth {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   background-color: #f1f1f1;
 }
@@ -1902,7 +2086,7 @@ form #arquivo {
 }
 
 .main-home .colwidth.sectionfirst .form-contact-home .title-section h2 {
-  color: #003a70;
+  color: #ff0015;
 }
 
 .main-home .colwidth.sectionfirst .form-contact-home .title-section h3 {
@@ -1916,7 +2100,7 @@ form #arquivo {
 }
 
 .content-steps {
-  background-color: #003a70;
+  background-color: #ff0015;
   padding: 80px 0 30px;
 }
 
@@ -2021,6 +2205,8 @@ form #arquivo {
 }
 
 .whats .btn-whats i {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
   vertical-align: middle;
   padding-right: 5px;
@@ -2148,6 +2334,8 @@ form #arquivo {
 }
 
 .main-energia .infograph.colwidth {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   background-color: #f1f1f1;
 }
@@ -2190,13 +2378,68 @@ form #arquivo {
 }
 
 .main-blog .blog-content .wrap {
-  padding: 65px 0;
+  padding: 15px 0 65px;
 }
 
 @media (max-width: 1180px) {
   .main-blog .blog-content .wrap {
     padding: 45px 20px;
   }
+}
+
+.main-blog .blog-content .feat-banner {
+  width: 100%;
+  padding-bottom: 59%;
+  position: relative;
+  margin-bottom: 40px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.main-blog .blog-content .feat-banner figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  z-index: 1;
+}
+
+.main-blog .blog-content .feat-banner .content {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  z-index: 3;
+  width: 100%;
+  max-width: 400px;
+  color: #fff;
+  padding: 30px;
+  background-color: #ed8b00;
+}
+
+.main-blog .blog-content .feat-banner .content h4 {
+  font-size: 18px;
+  font-family: "Brandon Grotesque", sans-serif;
+  line-height: 1.375;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.main-blog .blog-content .feat-banner .content span {
+  font-size: 16px;
+  font-family: "Brandon Grotesque", sans-serif;
+  font-weight: 100;
+  line-height: 1.375;
+  padding-bottom: 15px;
+}
+
+.main-blog .blog-content .feat-banner .content p {
+  font-size: 16px;
+  font-family: "Brandon Grotesque", sans-serif;
+  line-height: 1.375;
+  padding-bottom: 15px;
+  font-weight: 300;
 }
 
 .main-blog .blog-content .wpcf7-submit {
@@ -2218,6 +2461,8 @@ form #arquivo {
 }
 
 .main-blog .blog-content .whats .btn-whats i {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
   vertical-align: middle;
   padding-right: 5px;
@@ -2229,6 +2474,16 @@ form #arquivo {
   padding-bottom: 40px;
 }
 
+.main-blog .blog-content .categs.categs-mobile {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .main-blog .blog-content .categs.categs-mobile {
+    display: block;
+  }
+}
+
 .main-blog .blog-content .categs ul,
 .main-blog .blog-content .categs li {
   list-style: none;
@@ -2237,7 +2492,7 @@ form #arquivo {
 .main-blog .blog-content .categs a {
   font-size: 13px;
   font-family: "Brandon Grotesque", sans-serif;
-  color: #003a70;
+  color: #ff0015;
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1.923;
@@ -2272,6 +2527,7 @@ form #arquivo {
   padding-bottom: 69%;
   background-size: cover;
   border-radius: 4px;
+  background-color: #e0e0e0;
 }
 
 .main-blog .blog-content .posts .post h4 {
@@ -2401,7 +2657,7 @@ form #arquivo {
 .content_search_map .col.infos .results .result h3 {
   font-size: 15px;
   font-family: "Brandon Grotesque", sans-serif;
-  color: #003a70;
+  color: #ff0015;
   font-weight: bold;
   line-height: 1.538;
   text-transform: uppercase;
@@ -2438,6 +2694,7 @@ form #arquivo {
 }
 
 .content_search_map .col.map-svg a path {
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
@@ -2470,6 +2727,8 @@ form #arquivo {
 }
 
 .form-representative form .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -2532,7 +2791,7 @@ form #arquivo {
 }
 
 .form-representative form .row .item .wpcf7-submit {
-  background-color: #003a70;
+  background-color: #ff0015;
   color: #fff;
   cursor: pointer;
 }
@@ -2611,15 +2870,17 @@ form #arquivo {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 99;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease;
+  z-index: -1;
+  -webkit-transition: opacity 0.2s ease 0.2s;
+  transition: opacity 0.2s ease 0.2s;
 }
 
 .modal.active {
   opacity: 1;
   pointer-events: unset;
+  z-index: 99;
 }
 
 .modal .overlay {
@@ -2639,6 +2900,7 @@ form #arquivo {
   position: absolute;
   top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   background: #f9f9f9;
   padding: 25px;
@@ -2672,15 +2934,18 @@ form #arquivo {
 
 .modal .content form .item {
   width: 375px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
 .menufooter {
   padding: 30px 0;
-  background-color: #003a70;
+  background-color: #ff0015;
 }
 
 .menufooter .wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -2703,6 +2968,7 @@ form #arquivo {
 .menufooter .menu .menu-menu-rodape-container {
   position: relative;
   top: 50%;
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
@@ -2761,7 +3027,7 @@ form #arquivo {
 #comments h3 {
   font-size: 22px;
   font-family: "Brandon Grotesque", sans-serif;
-  color: #003a70;
+  color: #ff0015;
   font-weight: bold;
   font-style: italic;
   text-transform: uppercase;
@@ -2849,7 +3115,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   height: 5px;
   cursor: pointer;
   animate: 0.2s;
-  background: #003a70;
+  background: #ff0015;
   border-radius: 15px;
 }
 
@@ -2857,14 +3123,14 @@ input[type="range"]::-webkit-slider-thumb {
   height: 20px;
   width: 40px;
   border-radius: 8px;
-  background: #003a70;
+  background: #ff0015;
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -7px;
 }
 
 input[type="range"]:focus::-webkit-slider-runnable-track {
-  background: #003a70;
+  background: #ff0015;
 }
 
 input[type="range"]::-moz-range-track {
@@ -2872,7 +3138,7 @@ input[type="range"]::-moz-range-track {
   height: 5px;
   cursor: pointer;
   animate: 0.2s;
-  background: #003a70;
+  background: #ff0015;
   border-radius: 15px;
 }
 
@@ -2880,7 +3146,7 @@ input[type="range"]::-moz-range-thumb {
   height: 20px;
   width: 40px;
   border-radius: 8px;
-  background: #003a70;
+  background: #ff0015;
   cursor: pointer;
 }
 
@@ -2932,9 +3198,11 @@ input[type="range"]:focus::-ms-fill-upper {
   position: fixed;
   padding: 20px !important;
   border-radius: 3px;
+  -webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
   top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   background-position: center;
   background-repeat: no-repeat;
@@ -2957,4 +3225,35 @@ div.wpcf7 .ajax-loader {
   vertical-align: middle;
   /* position: absolute; */
   margin: 0 auto;
+}
+
+.grecaptcha-badge {
+  display: none;
+}
+
+@keyframes hvr-wobble-horizontal {
+  16.65% {
+    -webkit-transform: translateX(8px);
+    transform: translateX(8px);
+  }
+  33.3% {
+    -webkit-transform: translateX(-6px);
+    transform: translateX(-6px);
+  }
+  49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+  }
+  66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px);
+  }
+  83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
 }

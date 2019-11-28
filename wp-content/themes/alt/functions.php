@@ -44,6 +44,7 @@
     register_nav_menus( array(
         'header_menu'       => __('Menu Principal'),
         'footer_menu'       => __('Menu Rodapé'),
+        'categories_menu'   => __('categorias'),
         'childrens_menu'    => __('Childrens Menu'),
     ));
 
@@ -67,6 +68,7 @@
         wp_enqueue_style('app', get_template_directory_uri() . '/assets/css/app.css', false, '1.1', 'all');
 
         wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), '2.2', true);
+        // wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.4.1.min.js', array(), '2.2', true);
         wp_enqueue_script('slick', get_template_directory_uri() . '/assets/js/slick.min.js', array(), '1.8', true);
         wp_enqueue_script('fancybox', get_template_directory_uri() . '/assets/js/jquery.fancybox.min.js', array(), '3', true);
         wp_enqueue_script('app', get_template_directory_uri() . '/assets/js/app.js', array(), '1.1', true);
@@ -159,6 +161,8 @@ add_filter('wpcf7_form_elements', function($content) {
 
     return $content;
 });
+
+
 
 // add_filter('wpcf7_autop_or_not', '__return_false');
 

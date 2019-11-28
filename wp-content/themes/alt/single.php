@@ -23,12 +23,16 @@
 				<div class="contact content-col2">
 					<div class="categs">
 						<h2>Categorias</h2>
-						<ul>
-							<?php wp_list_categories( array(
-								'orderby' => 'name',
-								'title_li' => ''
-							) ); ?> 
-						</ul>
+						<?php
+								wp_nav_menu( array(
+										'theme_location' => 'categories_menu',
+										'menu_class'     => 'nav',
+										'echo'           => true,
+										'fallback_cb'    => 'wp_page_menu',
+										'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+										'depth'          => 0
+								) );
+						?>
 					</div>
 
 					<h2>Dúvidas</h2>

@@ -48,7 +48,7 @@
     <header class="header-main">
         <div class="wrap">
             <div class="block-menu">
-                <div class="burg-menu" onclick="togglemenu();">
+                <div class="burg-menu toggle__menu">
                     <svg enable-background="new 0 0 24 24" height="24px" id="Layer_1" version="1.1" viewBox="0 0 24 24" width="24px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><g><path d="M23.244,17.009H0.75c-0.413,0-0.75,0.36-0.75,0.801v3.421C0,21.654,0.337,22,0.75,22h22.494c0.414,0,0.75-0.346,0.75-0.77    V17.81C23.994,17.369,23.658,17.009,23.244,17.009z M23.244,9.009H0.75C0.337,9.009,0,9.369,0,9.81v3.421    c0,0.424,0.337,0.769,0.75,0.769h22.494c0.414,0,0.75-0.345,0.75-0.769V9.81C23.994,9.369,23.658,9.009,23.244,9.009z     M23.244,1.009H0.75C0.337,1.009,0,1.369,0,1.81V5.23c0,0.423,0.337,0.769,0.75,0.769h22.494c0.414,0,0.75-0.346,0.75-0.769V1.81    C23.994,1.369,23.658,1.009,23.244,1.009z"/></g></g></svg>
                 </div>
                 <a href="<?php echo get_home_url(); ?>" class="logo">
@@ -94,7 +94,7 @@
                     <?php 
                         }
                     ?>
-                    <a href="" class="btn" data-modal="orcamento">Solicite um orçamento Gratis</a>
+                    <a href="" class="btn btn-white" data-modal="orcamento">Solicite um orçamento Gratis</a>
                 </div>
             </nav>
         
@@ -141,7 +141,7 @@
             </div>
         </nav>
 
-        <a class="close" onclick="togglemenu();">
+        <a class="close toggle__menu" style="cursor: pointer">
             <svg height="32" id="close" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M4 8 L8 4 L16 12 L24 4 L28 8 L20 16 L28 24 L24 28 L16 20 L8 28 L4 24 L12 16 z"/></svg>
         </a>
     </div>

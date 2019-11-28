@@ -35,8 +35,6 @@
                 <h6 class="title-footer">Onde Estamos</h6>
                 <ul class="list-footer">
                 <?php
-                
-                        
                     $endereco = $fields_contact['onde_estamos'];
                     
                     if($endereco)
@@ -66,7 +64,7 @@
                             <?php echo $fields_contact['contatos']['telefone_2']; ?>
                         </a>
                     </li>
-                    <li><a href="mailto:coworking@intermetrocoworking.com.br">contato@ric.com.br</a></li>
+                    <li><a href="mailto:<?php echo $fields_contact['contatos']['email']; ?>"><?php echo $fields_contact['contatos']['email']; ?></a></li>
                 </ul>
             </div>
             <div class="col">
@@ -74,7 +72,28 @@
             </div>
             <div class="col">
                 <ul class="flex socials">
-                    <li>
+
+                    <?php
+                        $redes_sociais = get_field("redes_sociais", 41);
+                        
+                        if($redes_sociais)
+                        {
+                            foreach($redes_sociais as $value)
+                            { 
+                            ?>
+                        
+                                <li>
+                                    <a href="<?php echo $value['link']; ?>" target="_blank">
+                                        <img src="<?php echo $value['icone']['url']; ?>" alt="<?php echo $value['nome']; ?>">
+                                    </a>
+                                </li>
+
+                            <?php }
+                        }
+                        //  var_dump($redes_sociais);
+                    ?>
+
+                    <!-- <li>
                         <a href="#" target="_blank">
                             <img src="<?php echo get_bloginfo('template_url') ?>/assets/images/facebook-ico.png" alt="">
                         </a>
@@ -88,7 +107,7 @@
                         <a href="#" target="_blank">
                             <img src="<?php echo get_bloginfo('template_url') ?>/assets/images/youtube-ico.png" alt="">
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             
             </div>
@@ -161,7 +180,7 @@
     </div>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <a href="https://wa.me/<?php echo preg_replace("/[^0-9]/", "", $fields_contact['contatos']['telefone_2']); ?>?text=Olá" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888; z-index:1000;background-image: -moz-linear-gradient( 90deg, rgb(38,179,61) 0%, rgb(91,211,102) 100%);background-image: -webkit-linear-gradient( 90deg, rgb(38,179,61) 0%, rgb(91,211,102) 100%); background-image: -ms-linear-gradient( 90deg, rgb(38,179,61) 0%, rgb(91,211,102) 100%); box-shadow: 0px 0px 20px 0px rgba(0, 1, 1, 0.2);" class="btn-fixed-whats" target="_blank">
+    <a href="https://wa.me/<?php echo preg_replace("/[^0-9]/", "", $fields_contact['contatos']['telefone_2']); ?>?text=Olá" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888; z-index:8;background-image: -moz-linear-gradient( 90deg, rgb(38,179,61) 0%, rgb(91,211,102) 100%);background-image: -webkit-linear-gradient( 90deg, rgb(38,179,61) 0%, rgb(91,211,102) 100%); background-image: -ms-linear-gradient( 90deg, rgb(38,179,61) 0%, rgb(91,211,102) 100%); box-shadow: 0px 0px 20px 0px rgba(0, 1, 1, 0.2);" class="btn-fixed-whats" target="_blank">
         <i style="margin-top:16px" class="fa fa-whatsapp"></i>
     </a>
  

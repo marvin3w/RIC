@@ -30,7 +30,9 @@
 
                 <?php $posts = get_posts(array(
                     'posts_per_page'	=> -1,
-                    'post_type'			=> 'projetos'
+                    'post_type'      => 'post',
+	                'post_status'    => 'publish',
+                    'category_name' => 'Projetos'
                 ));
 
                 if( $posts ): ?>
@@ -39,8 +41,8 @@
                         
                         setup_postdata( $post );
 
-                        $imagem = get_field('conteudo_da_lista')['thumb'];
-                        $resumo = wp_trim_words( get_field('conteudo_da_lista' )['resumo'], $num_words = 12, $more = '...' );
+                        $imagem = get_field('imagem');
+                        $resumo = substr(get_field('resumo'), 0, 85);
                         
                         ?>
                         
@@ -49,7 +51,7 @@
                                     <img src="<?php echo $imagem['url']; ?>" alt="<?php echo $imagem['alt']; ?>">
                                 </figure>
                                 <p>
-                                    <?php echo $resumo; ?>
+                                    <?php echo $resumo; ?>...
                                 </p>
                                 <a href="<?php the_permalink(); ?>" class="btn">Ler mais</a>
                             </div>

@@ -1,9 +1,17 @@
 // Trgger toggle menu
-var menu = document.querySelector(".menu-mobile");
 
-function togglemenu() {
+var clickEvent = "ontouchstart" in window ? "touchstart" : "click";
+var menu = document.querySelector(".menu-mobile");
+var menuclose = document.querySelector(".menu-mobile .close");
+var burg = document.querySelector(".burg-menu");
+
+burg.addEventListener(clickEvent, function() {
   menu.classList.toggle("active");
-}
+});
+
+menuclose.addEventListener(clickEvent, function() {
+  menu.classList.toggle("active");
+});
 
 var range = document.querySelector(".wpcf7-range"),
   output = document.querySelector(".result");
@@ -18,6 +26,63 @@ if (range) {
     },
     false
   );
+}
+
+window.onscroll = function() {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.querySelector(".header-main").classList.add("fixed");
+  } else {
+    document.querySelector(".header-main").classList.remove("fixed");
+  }
+}
+
+var videos = document.querySelector(".infograph .videos");
+
+if (videos) {
+  fetch(
+    "https://www.googleapis.com/youtube/v3/search?key=AIzaSyD_-f6VfQz55oxuo4IfuH4z_5UmIjOzBdI&channelId=UCtmVvSCpSUkmk-zEmidZYhQ&part=snippet,id&order=date&maxResults=2"
+  )
+    .then(function(response) {
+      response.json().then(function(data) {
+        setvideos(data);
+      });
+    })
+    .catch(function(err) {
+      console.error("Failed retrieving information", err);
+    });
+}
+
+function setvideos(data) {
+  videos.innerHTML = " ";
+  var video = data.items;
+  video.map(function(content) {
+    var tmplt =
+      '<a href="#" class="quote video" data-videoid="' +
+      content.id.videoId +
+      '">' +
+      '     <figure style="background-image: url(' +
+      content.snippet.thumbnails.medium.url +
+      ');">' +
+      // '        <img src="' +
+      // content.snippet.thumbnails.medium.url +
+      // '" alt="">' +
+      "    </figure>" +
+      "    <p>" +
+      content.snippet.title +
+      "</p>" +
+      "</a>";
+
+    // console.log(content);
+    var z = document.createElement("span"); // is a node
+    z.innerHTML = tmplt;
+    videos.appendChild(z);
+    // document.querySelector(".infograph .videos").appendChild(tmplt);
+    console.log(content);
+  });
 }
 
 (function($) {
@@ -154,7 +219,7 @@ if (range) {
           breakpoint: 4024,
           settings: {
             slidesToShow: 4,
-            slidesToScroll: 4,
+            slidesToScroll: 1,
             infinite: true,
             dots: true,
             variableWidth: true
@@ -219,9 +284,12 @@ if (range) {
       );
     });
 
-    $(".toggle__menu").on("click", function() {
-      $("body").toggleClass("menu__opened");
-    });
+    // $(document).on("click", ".toggle__menu", function(event) {
+    //   event.preventDefault();
+    //   $("body").toggleClass("menu__opened");
+    //   $(".menu-mobile").toggleClass("active");
+    //   // alert("resolving...");
+    // });
   });
 })(jQuery);
 

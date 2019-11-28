@@ -10,7 +10,38 @@
     </section>
     <section class="blog-content">
         <div class="wrap">
+            <div class="categs categs-mobile">
+                <h2>Categorias</h2>
+
+                <?php
+                    wp_nav_menu( array(
+                        'theme_location' => 'categories_menu',
+                        'menu_class'     => 'nav',
+                        'echo'           => true,
+                        'fallback_cb'    => 'wp_page_menu',
+                        'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                        'depth'          => 0
+                    ) );
+                ?>
+
+                <!-- <ul>
+                    <?php wp_list_categories( array(
+                        'orderby' => 'name',
+                        'title_li' => ''
+                    ) ); ?> 
+                </ul> -->
+            </div>
             <div class="posts content-col1">
+            <!-- <div class="feat-banner">
+                <a href="#">
+                    <figure style="background-image:url(<?php echo get_template_directory_uri(); ?>/assets/images/Sindicato-dos-trabalhadores-1024x708.png);"></figure>
+                    <div class="content">
+                        <h4>PROJETO</h4>
+                        <span class="date">11.09.2019</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan rhoncus elementum. Donec quis aliquet neque, et feugiat dolor.</p>
+                    </div>
+                </a>
+            </div> -->
 
                 <?php
                     $args = array(
@@ -43,12 +74,24 @@
             <div class="contact content-col2">
                 <div class="categs">
                     <h2>Categorias</h2>
-                    <ul>
+
+                    <?php
+                        wp_nav_menu( array(
+                            'theme_location' => 'categories_menu',
+                            'menu_class'     => 'nav',
+                            'echo'           => true,
+                            'fallback_cb'    => 'wp_page_menu',
+                            'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                            'depth'          => 0
+                        ) );
+                    ?>
+
+                    <!-- <ul>
                         <?php wp_list_categories( array(
                             'orderby' => 'name',
                             'title_li' => ''
                         ) ); ?> 
-                    </ul>
+                    </ul> -->
                 </div>
 
 

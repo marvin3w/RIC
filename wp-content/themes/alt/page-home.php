@@ -29,7 +29,7 @@
                                 <?php foreach( $posts as $post): // variable must be called $post (IMPORTANT) ?>
                                     <?php setup_postdata($post); ?>
                                     
-                                    <a href="<?php the_permalink(); ?>" class="btn callaction"><?php echo $value['texto_do_botao']; ?></a>
+                                    <a href="<?php the_permalink(); ?>" class="btn btn-white callaction"><?php echo $value['texto_do_botao']; ?></a>
 
                                     <?php endforeach; ?>
                                 <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
@@ -168,8 +168,8 @@
                     <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
                 <?php endif; ?>
                 <div class="callaction">
-                    <a href="" class="btn" data-modal="orcamento">Quero adquirir</a>
-                    <a href="https://wa.me/<?php echo preg_replace("/[^0-9]/", "", get_field('contatos', 41)['telefone_2']); ?>?text=Olá" class="btn" target="_blank">Falar com atendente</a>
+                    <a href="" class="btn btn-white" data-modal="orcamento">Quero adquirir</a>
+                    <a href="https://wa.me/<?php echo preg_replace("/[^0-9]/", "", get_field('contatos', 41)['telefone_2']); ?>?text=Olá" class="btn btn-white" target="_blank">Falar com atendente</a>
                 </div>
             </div>
             
@@ -187,8 +187,12 @@
 
                 <?php $posts = get_posts(array(
                     'posts_per_page'	=> -1,
-                    'post_type'			=> 'projetos'
+                    'post_type'      => 'post',
+	                'post_status'    => 'publish',
+                    'category_name' => 'Projetos'
                 ));
+
+                // var_dump($posts);
 
                 if( $posts ): ?>
                     
@@ -196,17 +200,17 @@
                         
                         setup_postdata( $post );
 
-                        $imagem = get_field('conteudo_da_lista')['thumb'];
-                        $resumo = wp_trim_words( get_field('conteudo_da_lista' )['resumo'], $num_words = 12, $more = '...' );
+                        $imagem = get_field('imagem');
+                        $resumo = substr(get_field('resumo'), 0, 85);
                         
                         ?>
                         
                             <div class="project">
                                 <figure>
-                                    <img src="<?php echo $imagem['url']; ?>" alt="<?php echo $imagem['alt']; ?>">
+                                    <img src="<?php echo $imagem['url']; ?>" >
                                 </figure>
                                 <p>
-                                    <?php echo $resumo; ?>
+                                    <?php echo $resumo; ?>...
                                 </p>
                                 <a href="<?php the_permalink(); ?>" class="btn">Ler mais</a>
                             </div>
@@ -303,7 +307,7 @@
 
                 <div class="quotes">
                     <?php if($fields['depoimentos']['depoimento_1']['id_do_video']){?>
-                        <a href="#" class="quote video" data-videoid="<?php echo $fields['depoimentos']['depoimento_1']['id_do_video'];?>">
+                        <a class="quote video" data-videoid="<?php echo $fields['depoimentos']['depoimento_1']['id_do_video'];?>">
                     <?php } else {  ?>
                         <a href="<?php echo $fields['depoimentos']['depoimento_1']['id_do_video'];?>" class="quote">
                     <?php }  ?>
@@ -315,7 +319,7 @@
                         </p>
                     </a>
                     <?php if($fields['depoimentos']['depoimento_2']['id_do_video']){?>
-                        <a href="#" class="quote video" data-videoid="<?php echo $fields['depoimentos']['depoimento_2']['id_do_video'];?>">
+                        <a class="quote video" data-videoid="<?php echo $fields['depoimentos']['depoimento_2']['id_do_video'];?>">
                     <?php } else {  ?>
                         <a href="<?php echo $fields['depoimentos']['depoimento_2']['id_do_video'];?>" class="quote">
                     <?php }  ?>
